@@ -31,8 +31,47 @@ document.querySelectorAll('.fade-in, .slide-in').forEach((element) => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     });
+});
+
+// Hero Slideshow
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Cambiar imagen cada 20 segundos
+    setInterval(nextSlide, 20000);
+
+    // CTA Button functionality
+    const ctaButton = document.querySelector('.cta-button');
+    if (ctaButton) {
+        ctaButton.addEventListener('click', function() {
+            const aboutSection = document.querySelector('#about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
 });

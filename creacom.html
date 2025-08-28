@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,79 +9,110 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <header id="header">
         <div class="container">
             <div class="logo">
                 <img src="imagenes/creacomlogo.jpeg" alt="CreaCom Logo">
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#about">Acerca de nosotros</a></li>
-                    <li><a href="#proyectos">Proyectos</a></li>
-                    <li><a href="#contacto" class="contact-btn">Contáctanos</a></li>
-                </ul>
-            </nav>
+            <div class="nav-content">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="proyectos.html" target="_blank">Proyectos</a></li>
+                        <li><a href="contactanos.html" target="_blank" class="contact-btn">Contáctanos</a></li>
+                    </ul>
+                </nav>
+                <div class="header-social">
+                    <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://tiktok.com/@creacom" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://instagram.com/creacom" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/company/creacom" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section id="hero" class="fade-in">
+        <div class="hero-slideshow">
+            <div class="slide active">
+                <img src="img/hero1.jpg" alt="Construcción 1">
+            </div>
+            <div class="slide">
+                <img src="img/hero2.jpg" alt="Construcción 2">
+            </div>
+            <div class="slide">
+                <img src="img/hero3.jpg" alt="Construcción 3">
+            </div>
+        </div>
         <div class="hero-content">
             <h1>Construimos el futuro con innovación y confianza</h1>
-            <button class="cta-button">Ver proyectos</button>
+            <button class="cta-button">Conoce más</button>
         </div>
     </section>
 
     <!-- Historia Section -->
     <section id="about" class="slide-in">
         <div class="container">
-            <h2>Nuestra Historia</h2>
             <div class="about-content">
                 <div class="about-image">
                     <img src="img/historia.jpg" alt="Historia CreaCom">
                 </div>
                 <div class="about-text">
-                    <p>CreaCom nació en 2010 con la visión de transformar el sector de la construcción. Desde entonces, nos hemos convertido en líderes en innovación y calidad, desarrollando proyectos que marcan la diferencia en el paisaje urbano.</p>
-                    <p>Con más de una década de experiencia, nuestro compromiso con la excelencia y la satisfacción del cliente nos ha permitido crecer y evolucionar, manteniendo siempre nuestros valores fundamentales de calidad, responsabilidad y profesionalismo.</p>
+                    <h2>Nuestra Historia</h2>
+                    <p>CreaCom nació en 2010 con la visión de transformar el sector de la construcción. Desde entonces,
+                        nos hemos convertido en líderes en innovación y calidad, desarrollando proyectos que marcan la
+                        diferencia en el paisaje urbano.</p>
+                    <p>Con más de una década de experiencia, nuestro compromiso con la excelencia y la satisfacción del
+                        cliente nos ha permitido crecer y evolucionar, manteniendo siempre nuestros valores
+                        fundamentales de calidad, responsabilidad y profesionalismo.</p>
+                    <p>Cada proyecto que emprendemos es una oportunidad para demostrar nuestra capacidad técnica y
+                        nuestro compromiso con la construcción sostenible del futuro.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Mission Vision Section -->
     <section id="mission-vision" class="slide-in">
         <div class="container">
-            <h2>Misión y Visión</h2>
             <div class="mv-content">
-                <div class="mission">
-                    <i class="fas fa-building"></i>
-                    <h3>Misión</h3>
-                    <p>Construir obras de excelencia que mejoren la calidad de vida de las personas, implementando las mejores prácticas y tecnologías innovadoras en cada proyecto.</p>
+                <div class="mv-image">
+                    <img src="img/mision-vision.jpg" alt="Misión y Visión">
                 </div>
-                <div class="vision">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Visión</h3>
-                    <p>Ser la empresa constructora líder en innovación y sostenibilidad, reconocida por su compromiso con la calidad y la satisfacción del cliente.</p>
+                <div class="mv-text">
+                    <h2>Misión y Visión</h2>
+                    <div class="mission">
+                        <h3><i class="fas fa-building"></i>Misión</h3>
+                        <p>Construir obras de excelencia que mejoren la calidad de vida de las personas, implementando
+                            las mejores prácticas y tecnologías innovadoras en cada proyecto.</p>
+                    </div>
+                    <div class="vision">
+                        <h3><i class="fas fa-chart-line"></i>Visión</h3>
+                        <p>Ser la empresa constructora líder en innovación y sostenibilidad, reconocida por su
+                            compromiso con la calidad y la satisfacción del cliente.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer id="contacto">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
                     <img src="imagenes/creacomlogo.jpeg" alt="CreaCom Logo">
-                    <h3>CreaCom Constructora</h3>
+                    <h3>CreaCom</h3>
                 </div>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://facebook.com/creacom" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://linkedin.com/company/creacom" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://tiktok.com/@creacom" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://instagram.com/creacom" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
                 <div class="contact-info">
                     <a href="mailto:info@creacom.com"><i class="fas fa-envelope"></i> info@creacom.com</a>
@@ -91,4 +123,5 @@
 
     <script src="js/script.js"></script>
 </body>
+
 </html>
