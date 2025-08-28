@@ -40,7 +40,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Hero Slideshow
+// Hero Slideshow - Cambio automático cada 20 segundos
 document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.slide');
     let currentSlide = 0;
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showSlide(currentSlide);
     }
 
-    // Cambiar imagen cada 20 segundos
+    // Cambiar imagen automáticamente cada 20 segundos
     setInterval(nextSlide, 20000);
 
     // CTA Button functionality
