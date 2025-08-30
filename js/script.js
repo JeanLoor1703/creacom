@@ -41,7 +41,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Hero Slideshow - Cambio automático cada 20 segundos
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.slide');
     let currentSlide = 0;
 
@@ -61,17 +61,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Cambiar imagen automáticamente cada 20 segundos
     setInterval(nextSlide, 20000);
-
-    // CTA Button functionality
-    const ctaButton = document.querySelector('.cta-button');
-    if (ctaButton) {
-        ctaButton.addEventListener('click', function () {
-            const aboutSection = document.querySelector('#about');
-            if (aboutSection) {
-                aboutSection.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    }
 });
