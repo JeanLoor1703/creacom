@@ -218,34 +218,31 @@ nav a:hover {
     color: var(--text-color);
 }
 
-/* Mission Vision Section */
+/* Mission Vision Section - Modificado */
 #mission-vision {
     padding: 100px 0;
     background: var(--white);
 }
 
 .mv-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: center;
-}
-
-.mv-image img {
-    width: 100%;
-    border-radius: 10px;
-    height: 400px;
-    object-fit: cover;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .mv-text h2 {
     font-size: 2.5rem;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     color: var(--text-color);
+    text-align: center;
+}
+
+.mv-blocks {
+    display: flex;
+    gap: 50px;
 }
 
 .mission, .vision {
-    margin-bottom: 30px;
+    flex: 1;
 }
 
 .mission h3, .vision h3 {
@@ -480,9 +477,14 @@ footer {
         gap: 10px;
     }
 
-    .about-content,
-    .mv-content {
+    .about-content {
         grid-template-columns: 1fr;
+    }
+
+    /* Responsive para Mission Vision */
+    .mv-blocks {
+        flex-direction: column;
+        gap: 30px;
     }
 
     .footer-content {
@@ -526,5 +528,14 @@ footer {
 
     .clients-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Ajustes adicionales para móvil en Mission Vision */
+    .mv-text h2 {
+        font-size: 1.8rem;
+    }
+
+    .mission h3, .vision h3 {
+        font-size: 1.3rem;
     }
 }
