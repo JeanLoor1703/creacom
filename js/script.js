@@ -1,3 +1,17 @@
+// Menu móvil
+document.getElementById('menuToggle').addEventListener('click', function() {
+    document.getElementById('navContent').classList.toggle('active');
+    this.classList.toggle('active');
+});
+
+// Cerrar menú al hacer click en un enlace
+document.querySelectorAll('.nav-content a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('navContent').classList.remove('active');
+        document.getElementById('menuToggle').classList.remove('active');
+    });
+});
+
 // Scroll Header Effect
 window.addEventListener('scroll', () => {
     const header = document.getElementById('header');

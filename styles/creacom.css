@@ -14,6 +14,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    overflow-x: hidden;
 }
 
 .container {
@@ -194,10 +199,6 @@ nav a:hover {
     align-items: center;
 }
 
-.about-image {
-    position: relative;
-}
-
 .about-image img {
     width: 100%;
     border-radius: 10px;
@@ -218,7 +219,7 @@ nav a:hover {
     color: var(--text-color);
 }
 
-/* Mission Vision Section - Modificado */
+/* Mission Vision Section */
 #mission-vision {
     padding: 100px 0;
     background: var(--white);
@@ -265,87 +266,6 @@ nav a:hover {
     color: var(--text-color);
 }
 
-/* Clients Section */
-#clients {
-    padding: 100px 0;
-    background: var(--light-gray);
-    position: relative;
-    overflow: hidden;
-}
-
-#clients::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
-    background: url('imagenes/creacomlogo.jpeg') no-repeat center;
-    background-size: contain;
-    opacity: 0.05;
-    z-index: 1;
-}
-
-.clients-content {
-    position: relative;
-    z-index: 2;
-}
-
-.clients-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 60px;
-    color: var(--text-color);
-}
-
-.clients-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.client-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-}
-
-.client-icon {
-    width: 80px;
-    height: 80px;
-    background: var(--orange);
-    border-radius: 50% 50% 50% 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-    transition: all 0.3s ease;
-}
-
-.client-icon:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
-}
-
-.client-icon i {
-    font-size: 2rem;
-    color: var(--white);
-}
-
-.client-name {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-color);
-    line-height: 1.4;
-    max-width: 250px;
-}
-
 /* Footer */
 footer {
     background: #f0f0f0;
@@ -360,18 +280,9 @@ footer {
     margin-bottom: 30px;
 }
 
-.footer-logo {
-    text-align: left;
-}
-
 .footer-logo img {
     height: 60px;
     margin-bottom: 15px;
-}
-
-.footer-logo h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
 }
 
 .footer-nav h4,
@@ -397,10 +308,6 @@ footer {
     transition: color 0.3s ease;
 }
 
-.footer-nav a:hover {
-    color: var(--primary-color);
-}
-
 .contact-item {
     margin-bottom: 15px;
 }
@@ -411,13 +318,8 @@ footer {
     transition: color 0.3s ease;
 }
 
-.contact-item a:hover {
-    color: var(--primary-color);
-}
-
 .contact-item i {
     margin-right: 8px;
-    width: 16px;
     color: var(--primary-color);
 }
 
@@ -462,59 +364,81 @@ footer {
     transform: translateY(0);
 }
 
-/* Responsive Design */
+/* Menu Toggle Button (solo visible en móvil) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-toggle i {
+        font-size: 24px;
+        color: var(--text-color);
+    }
+
     .nav-content {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: var(--white);
         flex-direction: column;
-        gap: 20px;
+        padding: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-content.active {
+        left: 0;
     }
 
     nav ul {
-        gap: 15px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
 
     .header-social {
-        gap: 10px;
+        margin-top: 20px;
     }
 
     .about-content {
         grid-template-columns: 1fr;
     }
 
-    /* Responsive para Mission Vision */
     .mv-blocks {
         flex-direction: column;
-        gap: 30px;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
     }
 
     .hero-content h1 {
         font-size: 2.5rem;
     }
 
-    .about-text h2,
-    .mv-text h2,
-    .clients-title {
-        font-size: 2rem;
-    }
-
-    .clients-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
         gap: 30px;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
     .container {
         padding: 0 15px;
+    }
+
+    .logo img {
+        height: 60px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
     }
 
     .footer-content {
@@ -526,16 +450,7 @@ footer {
         text-align: center;
     }
 
-    .clients-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Ajustes adicionales para móvil en Mission Vision */
-    .mv-text h2 {
-        font-size: 1.8rem;
-    }
-
-    .mission h3, .vision h3 {
-        font-size: 1.3rem;
+    .social-links {
+        justify-content: center;
     }
 }
