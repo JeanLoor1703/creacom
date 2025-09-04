@@ -1,5 +1,5 @@
 // Menu móvil
-document.getElementById('menuToggle').addEventListener('click', function() {
+document.getElementById('menuToggle').addEventListener('click', function () {
     document.getElementById('navContent').classList.toggle('active');
     this.classList.toggle('active');
 });
@@ -55,7 +55,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Hero Slideshow - Cambio automático cada 20 segundos
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const slides = document.querySelectorAll('.slide');
     let currentSlide = 0;
 
