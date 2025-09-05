@@ -364,7 +364,7 @@ footer {
     transform: translateY(0);
 }
 
-/* Menu Toggle Button (solo visible en móvil) */
+/* Menu Toggle Button */
 .menu-toggle {
     display: none;
     background: none;
@@ -452,5 +452,39 @@ footer {
 
     .social-links {
         justify-content: center;
+    }
+
+    /* Mejoras adicionales para móvil */
+    #header {
+        padding: 10px 0;
+    }
+
+    .about-text h2 {
+        font-size: 2rem;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+    }
+
+    .mv-text h2 {
+        font-size: 2rem;
+    }
+
+    .mission h3, .vision h3 {
+        font-size: 1.3rem;
+    }
+
+    .mission p, .vision p {
+        font-size: 1rem;
+    }
+
+    .contact-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    #about, #mission-vision {
+        padding: 60px 0;
     }
 }
