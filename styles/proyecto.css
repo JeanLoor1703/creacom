@@ -346,3 +346,52 @@ footer {
         padding: 0 10px;
     }
 }
+/* Mejoras para diseño móvil */
+@media (max-width: 768px) {
+    /* Ajustes de proyectos */
+    .project-details {
+        padding: 20px;
+    }
+
+    .project-gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .project-info {
+        flex-direction: column;
+    }
+
+    .project-description,
+    .project-metadata {
+        width: 100%;
+    }
+
+    /* Ajustes de navegación de proyectos */
+    .project-navigation {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .prev-project,
+    .next-project {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-title {
+        font-size: 1.75rem;
+    }
+
+    .project-details {
+        padding: 15px;
+    }
+
+    .project-metadata li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
