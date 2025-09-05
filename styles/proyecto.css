@@ -346,52 +346,47 @@ footer {
         padding: 0 10px;
     }
 }
-/* Mejoras para diseño móvil */
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}   
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-color);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
 @media (max-width: 768px) {
-    /* Ajustes de proyectos */
-    .project-details {
-        padding: 20px;
+    .menu-toggle {
+        display: flex;
     }
-
-    .project-gallery {
-        grid-template-columns: 1fr;
+    .nav-content {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: var(--white);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 20px 0;
+    }
+    .nav-content.active {
+        display: flex;
+    }
+    nav ul {
+        flex-direction: column;
         gap: 15px;
+        align-items: center;
     }
-
-    .project-info {
-        flex-direction: column;
-    }
-
-    .project-description,
-    .project-metadata {
-        width: 100%;
-    }
-
-    /* Ajustes de navegación de proyectos */
-    .project-navigation {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .prev-project,
-    .next-project {
-        width: 100%;
-        text-align: center;
+    .header-social {
+        justify-content: center;
+        gap: 15px;
+        margin-top: 15px;
     }
 }
-
-@media (max-width: 480px) {
-    .project-title {
-        font-size: 1.75rem;
-    }
-
-    .project-details {
-        padding: 15px;
-    }
-
-    .project-metadata li {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-}
+/* End of styles/proyecto.css */
