@@ -47,4 +47,63 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
         observer.observe(card);
     });
+    
+    // Menú de hamburguesa
+    const menuToggle = document.createElement('div');
+    menuToggle.id = 'menuToggle';
+    menuToggle.innerHTML = '<span></span><span></span><span></span>';
+    
+    // Añadir el botón de hamburguesa al header si no existe
+    const header = document.getElementById('header');
+    const navContent = document.querySelector('.nav-content');
+    
+    if (!document.getElementById('menuToggle')) {
+        header.querySelector('.container').insertBefore(menuToggle, navContent);
+        
+        // Manejar el clic en el botón de hamburguesa
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navContent.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        });
+        
+        // Cerrar menú al hacer click en un enlace
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navContent.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+        });
+        
+        // Cerrar menú al hacer click fuera
+        document.addEventListener('click', (e) => {
+            if (!header.contains(e.target) && navContent.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navContent.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            }
+        });
+    }
+});
+
+// Optimización del scroll para el menú
+let lastScrollTop = 0;
+const scrollThreshold = 5;
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    const header = document.getElementById('header');
+    
+    if (Math.abs(lastScrollTop - currentScroll) <= scrollThreshold) return;
+
+    if (currentScroll > lastScrollTop && currentScroll > 100) {
+        // Scroll hacia abajo - ocultar header
+        header.style.transform = 'translateY(-100%)';
+    } else {
+        // Scroll hacia arriba - mostrar header
+        header.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollTop = currentScroll;
 });
