@@ -114,13 +114,14 @@ nav a:hover {
     z-index: 1001;
 }
 
-.menu-toggle span {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background: var(--text-color);
-    margin: 5px 0;
-    transition: all 0.3s ease;
+.menu-toggle i {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.menu-toggle.active i {
+    color: var(--primary-color);
 }
 
 /* Main Content */
@@ -303,39 +304,31 @@ footer {
         display: block;
     }
 
-    .menu-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-    }
-
     .nav-content {
         position: fixed;
-        top: 80px;
+        top: 0;
         left: -100%;
         width: 100%;
-        height: calc(100vh - 80px);
+        height: 100vh;
         background: var(--white);
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         padding: 20px;
         transition: all 0.3s ease;
-        z-index: 1000;
+        z-index: 999;
     }
 
     .nav-content.active {
         left: 0;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
 
     nav ul {
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        margin-bottom: 30px;
     }
 
     .header-social {
@@ -356,11 +349,12 @@ footer {
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 25px;
-        padding: 0 15px;
+        padding: 0 10px;
     }
 
     .project-card {
         margin-bottom: 20px;
+        max-width: 100%;
     }
 
     .project-image {
@@ -436,79 +430,6 @@ footer {
     }
 }
 
-/* Accessibility Improvements */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-.nav-content a:focus,
-.project-card:focus,
-.social-links a:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-}
-
-/* Touch Device Optimizations */
-@media (hover: none) {
-    .project-card:hover {
-        transform: none;
-    }
-
-    .social-links a:hover {
-        transform: none;
-    }
-}
-
-/* Arreglo del menú móvil */
-@media (max-width: 768px) {
-    /* Corrección para el botón hamburguesa */
-    .menu-toggle {
-        display: block;
-        font-size: 1.5rem;
-    }
-    
-    /* Corrección del menú desplegable */
-    .nav-content {
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100vh;
-        background: var(--white);
-        flex-direction: column;
-        padding-top: 120px;
-        transition: all 0.3s ease;
-    }
-    
-    /* Mejor visibilidad para el menú activo */
-    .nav-content.active {
-        left: 0;
-        box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-    
-    /* Optimización para pantallas pequeñas */
-    .projects-grid {
-        grid-template-columns: 1fr;
-        padding: 0 10px;
-    }
-    
-    /* Mejora para la visualización de proyectos en móvil */
-    .project-card {
-        max-width: 100%;
-    }
-    
-    /* Ajuste para que el footer se vea mejor en móviles */
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-}
-
 /* Correcciones para dispositivos muy pequeños */
 @media (max-width: 380px) {
     .logo img {
@@ -545,5 +466,48 @@ footer {
         width: 100%;
         padding: 0 15px;
         box-sizing: border-box;
+    }
+    
+    /* Asegurar que el menú se vea correctamente */
+    .nav-content {
+        padding-top: 80px;
+    }
+    
+    /* Mejora de visibilidad del botón hamburguesa */
+    .menu-toggle {
+        padding: 15px;
+        z-index: 1100;
+    }
+    
+    .menu-toggle i {
+        font-size: 1.8rem;
+    }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+.nav-content a:focus,
+.project-card:focus,
+.social-links a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+    .project-card:hover {
+        transform: none;
+    }
+
+    .social-links a:hover {
+        transform: none;
     }
 }
