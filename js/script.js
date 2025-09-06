@@ -1,46 +1,38 @@
-// Función para manejar el menú móvil
-function setupMobileMenu() {
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Menu toggle functionality - Fixed for mobile
     const menuToggle = document.getElementById('menuToggle');
     const navContent = document.getElementById('navContent');
     
-    // Comprobar si los elementos existen
-    if (!menuToggle || !navContent) {
-        console.error('Elementos del menú no encontrados');
-        return;
+    // Make sure elements exist before adding event listeners
+    if (menuToggle && navContent) {
+        // Add click event to menu button
+        menuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            navContent.classList.toggle('active');
+            console.log('Menu toggle clicked'); // Debug
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInside = navContent.contains(event.target) || 
+                                  menuToggle.contains(event.target);
+            
+            if (!isClickInside && navContent.classList.contains('active')) {
+                navContent.classList.remove('active');
+            }
+        });
+        
+        // Close menu when clicking a menu item
+        document.querySelectorAll('.nav-content a').forEach(link => {
+            link.addEventListener('click', () => {
+                navContent.classList.remove('active');
+            });
+        });
     }
     
-    // Evento para abrir/cerrar el menú
-    menuToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        navContent.classList.toggle('active');
-        menuToggle.classList.toggle('active');
-        console.log('Menú toggled');
-    });
-    
-    // Cerrar el menú al hacer clic en enlaces
-    const navLinks = navContent.querySelectorAll('a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navContent.classList.remove('active');
-            menuToggle.classList.remove('active');
-        });
-    });
-    
-    // Cerrar el menú al hacer clic fuera
-    document.addEventListener('click', function(event) {
-        const isClickInside = navContent.contains(event.target) || 
-                              menuToggle.contains(event.target);
-        
-        if (!isClickInside && navContent.classList.contains('active')) {
-            navContent.classList.remove('active');
-            menuToggle.classList.remove('active');
-        }
-    });
-}
-
-// Scroll Header Effect
-function setupScrollEffect() {
+    // Scroll Header Effect
     window.addEventListener('scroll', () => {
         const header = document.getElementById('header');
         if (window.scrollY > 50) {
@@ -51,25 +43,8 @@ function setupScrollEffect() {
             header.style.background = '#ffffff';
         }
     });
-}
-
-// Inicializar todo cuando se carga el documento
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Documento cargado');
-    setupMobileMenu();
-    setupScrollEffect();
     
-    // Mejorar la carga de imágenes
-    const projectImages = document.querySelectorAll('.project-image img');
-    if ('loading' in HTMLImageElement.prototype) {
-        projectImages.forEach(img => {
-            if (!img.hasAttribute('loading')) {
-                img.loading = 'lazy';
-            }
-        });
-    }
-    
-    // Animaciones de aparición
+    // Scroll Animation for project cards
     const observerOptions = {
         threshold: 0.1
     };
@@ -85,4 +60,60 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.fade-in, .slide-in').forEach((element) => {
         observer.observe(element);
     });
+    
+    // Use lazy loading for images if browser supports it
+    if ('loading' in HTMLImageElement.prototype) {
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            img.loading = 'lazy';
+        });
+    }
+    
+    // Smooth Scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+// Mejorar el comportamiento del menú móvil
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const navContent = document.getElementById('navContent');
+    
+    if (menuToggle && navContent) {
+        // SOLUCIÓN: Añadir el evento click al botón hamburguesa
+        menuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Toggle de las clases active
+            navContent.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Asegurar que el menú se cierra al hacer clic fuera de él
+        document.addEventListener('click', function(event) {
+            const isClickInside = navContent.contains(event.target) || 
+                                  menuToggle.contains(event.target);
+            
+            if (!isClickInside && navContent.classList.contains('active')) {
+                navContent.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    }
+    
+    // Mejorar la carga de imágenes en móvil
+    const projectImages = document.querySelectorAll('.project-image img');
+    if ('loading' in HTMLImageElement.prototype) {
+        projectImages.forEach(img => {
+            img.loading = 'lazy';
+        });
+    }
 });
