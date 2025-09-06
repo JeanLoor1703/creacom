@@ -37,10 +37,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo img {
     height: 100px;
+    transition: height 0.3s ease;
 }
 
 .nav-content {
@@ -98,6 +100,46 @@ nav a:hover {
     color: var(--primary-color);
 }
 
+/* Hamburger Menu Styles */
+#menuToggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 1001;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#menuToggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--text-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+#menuToggle.active span:nth-child(1) {
+    transform: translateY(9.5px) rotate(45deg);
+}
+
+#menuToggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+#menuToggle.active span:nth-child(3) {
+    transform: translateY(-9.5px) rotate(-45deg);
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
 /* Main Content */
 main {
     padding-top: 160px;
@@ -117,7 +159,7 @@ main {
 /* Projects Grid */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     padding: 0 20px;
 }
@@ -201,7 +243,7 @@ footer {
 
 .footer-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     gap: 40px;
     margin-bottom: 30px;
 }
@@ -287,114 +329,36 @@ footer {
     transform: translateY(-3px);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .nav-content {
-        flex-direction: column;
-        gap: 20px;
-    }
+/* ==== RESPONSIVE DESIGN ==== */
 
-    nav ul {
-        gap: 15px;
-    }
-
-    .header-social {
-        gap: 10px;
-    }
-
-    .page-title {
-        font-size: 2.5rem;
-        margin-bottom: 40px;
-    }
-
+/* TABLET (768px - 1199px) */
+@media (max-width: 1199px) and (min-width: 768px) {
+    /* Projects Grid - 2 columns in tablet */
     .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 30px;
-        padding: 0 15px;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-    }
-
-    main {
-        padding-top: 140px;
-    }
-}
-
-@media (max-width: 480px) {
-    .page-title {
-        font-size: 2rem;
     }
     
-    .container {
-        padding: 0 15px;
-    }
-
+    /* Footer - 2 columns in tablet */
     .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .footer-logo {
-        text-align: center;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-        padding: 0 10px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
     }
 }
-/* Hamburger Menu Styles */
-#menuToggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 22px;
-    cursor: pointer;
-    z-index: 1001;
-    position: relative;
-}
 
-#menuToggle span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: var(--text-color);
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
-
-#menuToggle.active span:nth-child(1) {
-    transform: translateY(9.5px) rotate(45deg);
-}
-
-#menuToggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-#menuToggle.active span:nth-child(3) {
-    transform: translateY(-9.5px) rotate(-45deg);
-}
-
-body.no-scroll {
-    overflow: hidden;
-}
-
-/* Media queries for responsive design */
-@media (max-width: 768px) {
-    #header .container {
-        position: relative;
+/* MOBILE (menos de 768px) */
+@media (max-width: 767px) {
+    /* Header responsive */
+    .logo img {
+        height: 60px;
+    }
+    
+    #header {
+        padding: 15px 0;
     }
     
     #menuToggle {
         display: flex;
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
     }
     
     .nav-content {
@@ -403,7 +367,7 @@ body.no-scroll {
         right: -100%;
         width: 100%;
         height: 100vh;
-        background: white;
+        background: var(--white);
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -419,24 +383,111 @@ body.no-scroll {
     nav ul {
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: 25px;
     }
     
     nav a {
         font-size: 1.5rem;
     }
     
+    .contact-btn {
+        padding: 15px 30px !important;
+        font-size: 1.3rem !important;
+    }
+    
     .header-social {
         margin-top: 30px;
+        gap: 20px;
+    }
+    
+    .header-social a {
+        font-size: 1.8rem;
+    }
+    
+    /* Main content */
+    main {
+        padding-top: 100px;
+    }
+    
+    .page-title {
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+    }
+    
+    /* Projects Grid - 1 column in mobile */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 15px;
+    }
+    
+    /* Footer - 1 column in mobile */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .footer-logo {
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
     }
 }
 
-@media (max-width: 480px) {
-    .logo img {
-        height: 80px;
+/* MOBILE EXTRA SMALL (menos de 480px) */
+@media (max-width: 479px) {
+    .container {
+        padding: 0 15px;
     }
     
-    #header {
-        padding: 15px 0;
+    .logo img {
+        height: 50px;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+    
+    .projects-grid {
+        padding: 0 10px;
+        gap: 20px;
+    }
+    
+    .project-content {
+        padding: 20px;
+    }
+    
+    .project-title {
+        font-size: 1.2rem;
+    }
+    
+    nav a {
+        font-size: 1.3rem;
+    }
+    
+    .contact-btn {
+        padding: 12px 25px !important;
+        font-size: 1.2rem !important;
+    }
+    
+    .header-social a {
+        font-size: 1.6rem;
+    }
+}
+
+/* LARGE SCREENS (más de 1200px) */
+@media (min-width: 1200px) {
+    /* Projects Grid - 3 columns in PC */
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Footer - 4 columns in PC */
+    .footer-content {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
