@@ -1,46 +1,78 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Seleccionar elementos del menú
-    const menuToggle = document.getElementById('menuToggle');
-    const navContent = document.getElementById('navContent');
-    
-    // Verificar que existen los elementos antes de agregar eventos
-    if (menuToggle && navContent) {
-        // Evento de clic para el botón de hamburguesa
-        menuToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Alternar las clases active
-            navContent.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-            
-            console.log('Menú toggle clic detectado'); // Para depuración
-        });
-        
-        // Cerrar menú al hacer clic fuera
-        document.addEventListener('click', function(event) {
-            const isClickInside = navContent.contains(event.target) || 
-                                  menuToggle.contains(event.target);
-            
-            if (!isClickInside && navContent.classList.contains('active')) {
-                navContent.classList.remove('active');
-                menuToggle.classList.remove('active');
+// Menu móvil
+document.getElementById('menuToggle').addEventListener('click', function () {
+    document.getElementById('navContent').classList.toggle('active');
+    this.classList.toggle('active');
+});
+
+// Cerrar menú al hacer click en un enlace
+document.querySelectorAll('.nav-content a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('navContent').classList.remove('active');
+        document.getElementById('menuToggle').classList.remove('active');
+    });
+});
+
+// Scroll Header Effect
+window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if (window.scrollY > 50) {
+        header.style.padding = '15px 0';
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+    } else {
+        header.style.padding = '20px 0';
+        header.style.background = '#ffffff';
+    }
+});
+
+// Scroll Animation
+const observerOptions = {
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.fade-in, .slide-in').forEach((element) => {
+    observer.observe(element);
+});
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Hero Slideshow - Cambio automático cada 20 segundos
+document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
             }
         });
-        
-        // Cerrar menú al hacer clic en un enlace del menú
-        document.querySelectorAll('.nav-content a').forEach(link => {
-            link.addEventListener('click', () => {
-                navContent.classList.remove('active');
-                menuToggle.classList.remove('active');
-            });
-        });
     }
-    
-    // Lazy loading para imágenes
-    if ('loading' in HTMLImageElement.prototype) {
-        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-            img.loading = 'lazy';
-        });
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
     }
+
+    // Cambiar imagen automáticamente cada 20 segundos
+    setInterval(nextSlide, 20000);
 });
