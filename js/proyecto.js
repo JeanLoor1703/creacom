@@ -126,3 +126,95 @@ document.addEventListener('DOMContentLoaded', function() {
         img.loading = 'lazy';
     });
 });
+// Función para inicializar el menú de hamburguesa
+function inicializarMenuHamburguesa() {
+    console.log('Inicializando menú hamburguesa...');
+    
+    // Obtener referencias a los elementos
+    const menuToggle = document.getElementById('menuToggle');
+    const navContent = document.getElementById('navContent');
+    
+    // Verificar si los elementos existen
+    if (!menuToggle) {
+        console.error('Error: El elemento #menuToggle no existe en el DOM');
+        return;
+    }
+    
+    if (!navContent) {
+        console.error('Error: El elemento #navContent no existe en el DOM');
+        return;
+    }
+    
+    console.log('Elementos del menú encontrados correctamente');
+    
+    // Establecer estado inicial
+    menuToggle.setAttribute('aria-expanded', 'false');
+    navContent.classList.remove('active');
+    
+    // Agregar event listener al botón de hamburguesa
+    menuToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        console.log('Botón de menú clickeado');
+        
+        // Toggle de clases
+        const isActive = menuToggle.classList.toggle('active');
+        navContent.classList.toggle('active');
+        
+        // Actualizar aria-expanded para accesibilidad
+        menuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+        
+        // Bloquear scroll del body cuando el menú está abierto
+        document.body.classList.toggle('no-scroll', isActive);
+        
+        console.log(`Menú ahora está ${isActive ? 'abierto' : 'cerrado'}`);
+    });
+    
+    // Cerrar el menú al hacer clic en cualquier enlace dentro del menú
+    const menuLinks = navContent.querySelectorAll('a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            console.log('Enlace del menú clickeado - cerrando menú');
+            menuToggle.classList.remove('active');
+            navContent.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+    
+    // Cerrar el menú al hacer clic fuera
+    document.addEventListener('click', function(e) {
+        if (navContent.classList.contains('active') && 
+            !navContent.contains(e.target) && 
+            !menuToggle.contains(e.target)) {
+            
+            console.log('Clic fuera del menú detectado - cerrando menú');
+            menuToggle.classList.remove('active');
+            navContent.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+    
+    // Cerrar el menú con la tecla Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navContent.classList.contains('active')) {
+            console.log('Tecla Escape presionada - cerrando menú');
+            menuToggle.classList.remove('active');
+            navContent.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+    
+    console.log('Menú hamburguesa inicializado correctamente');
+}
+
+// Asegurarse de que el DOM esté completamente cargado antes de inicializar
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', inicializarMenuHamburguesa);
+} else {
+    // Si el DOM ya está cargado (por ejemplo, si el script se carga al final del body)
+    inicializarMenuHamburguesa();
+}
