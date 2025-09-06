@@ -33,7 +33,7 @@ body {
     width: 100%;
     background: var(--white);
     padding: 20px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     transition: all 0.3s ease;
 }
@@ -298,6 +298,7 @@ footer {
 
 /* Responsive Design - Mobile */
 @media (max-width: 768px) {
+
     /* Header Mobile Styles */
     .menu-toggle {
         display: block;
@@ -466,6 +467,7 @@ footer {
 
 /* Arreglo del menú móvil */
 @media (max-width: 768px) {
+
     /* Corrección para el botón hamburguesa */
     .menu-toggle {
         display: block;
@@ -476,7 +478,7 @@ footer {
         background: none;
         border: none;
     }
-    
+
     /* Corrección del menú desplegable */
     .nav-content {
         position: fixed;
@@ -490,24 +492,24 @@ footer {
         transition: all 0.3s ease;
         z-index: 1000;
     }
-    
+
     /* Mejor visibilidad para el menú activo */
     .nav-content.active {
         left: 0;
-        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     }
-    
+
     /* Optimización para pantallas pequeñas */
     .projects-grid {
         grid-template-columns: 1fr;
         padding: 0 10px;
     }
-    
+
     /* Mejora para la visualización de proyectos en móvil */
     .project-card {
         max-width: 100%;
     }
-    
+
     /* Ajuste para que el footer se vea mejor en móviles */
     .footer-content {
         grid-template-columns: 1fr;
@@ -520,20 +522,20 @@ footer {
     .logo img {
         height: 50px;
     }
-    
+
     .page-title {
         font-size: 1.5rem;
         margin-bottom: 20px;
     }
-    
+
     .project-title {
         font-size: 1rem;
     }
-    
+
     .project-category {
         font-size: 0.85rem;
     }
-    
+
     main {
         padding-top: 80px;
     }
@@ -545,7 +547,7 @@ footer {
         max-width: 100%;
         height: auto;
     }
-    
+
     /* Evitar que el contenido se salga de la pantalla */
     .container {
         width: 100%;
