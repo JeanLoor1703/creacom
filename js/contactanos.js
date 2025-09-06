@@ -6,37 +6,60 @@ document.addEventListener('DOMContentLoaded', function() {
     // Elementos principales
     const contactForm = document.getElementById('contactForm');
     const submitBtn = document.querySelector('.submit-btn');
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navMenu = document.getElementById('navMenu');
+    const menuToggle = document.querySelector('#menuToggle');
+    const navContent = document.querySelector('.nav-content');
     
-    // ====== MOBILE MENU FUNCTIONALITY ======
-    if (mobileMenuBtn && navMenu) {
-        mobileMenuBtn.addEventListener('click', function() {
+    // ====== MOBILE MENU FUNCTIONALITY - Igual que otras páginas ======
+    if (menuToggle && navContent) {
+        // Toggle del menú hamburguesa
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
             this.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            
-            // Prevenir scroll del body cuando el menú está abierto
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            navContent.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
         });
-
+        
         // Cerrar menú al hacer click en un enlace
-        navMenu.addEventListener('click', function(e) {
-            if (e.target.tagName === 'A') {
-                mobileMenuBtn.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navContent.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+        });
+        
+        // Cerrar menú al hacer click fuera del header
+        document.addEventListener('click', (e) => {
+            const header = document.getElementById('header');
+            if (!header.contains(e.target) && navContent.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navContent.classList.remove('active');
+                document.body.classList.remove('no-scroll');
             }
         });
-
-        // Cerrar menú al hacer click fuera
-        document.addEventListener('click', function(e) {
-            if (!mobileMenuBtn.contains(e.target) && !navMenu.contains(e.target)) {
-                mobileMenuBtn.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
+        
+        // Cerrar menú al redimensionar la ventana
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 767) {
+                menuToggle.classList.remove('active');
+                navContent.classList.remove('active');
+                document.body.classList.remove('no-scroll');
             }
         });
     }
+    
+    // ====== SCROLL HEADER EFFECT - Igual que otras páginas ======
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        if (window.scrollY > 50) {
+            header.style.padding = '15px 0';
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+        } else {
+            header.style.padding = '20px 0';
+            header.style.background = '#ffffff';
+        }
+    });
     
     // ====== FORM VALIDATION AND SUBMISSION ======
     if (contactForm) {
@@ -351,48 +374,20 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCharacterCounter();
     }
     
-    // ====== PHONE FORMATTING ======
-    const telefonoInput = document.getElementById('telefono');
-    if (telefonoInput) {
-        telefonoInput.addEventListener('input', function() {
-            let value = this.value.replace(/\D/g, '');
-            
-            // Formatear números ecuatorianos
-            if (value.startsWith('593')) {
-                // Internacional
-                if (value.length <= 12) {
-                    value = value.replace(/^(593)(\d{1})(\d{0,4})(\d{0,4})/, '+$1 $2 $3 $4');
-                }
-            } else if (value.startsWith('0')) {
-                // Nacional
-                if (value.length <= 10) {
-                    value = value.replace(/^(\d{4})(\d{0,3})(\d{0,3})/, '$1 $2 $3');
-                }
-            }
-            
-            this.value = value.trim();
-        });
-    }
-    
-    // ====== SMOOTH SCROLLING ======
+    // ====== SMOOTH SCROLLING - Igual que otras páginas ======
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
+                target.scrollIntoView({
                     behavior: 'smooth'
                 });
             }
         });
     });
     
-    // ====== INTERSECTION OBSERVER ANIMATIONS ======
+    // ====== INTERSECTION OBSERVER ANIMATIONS - Igual que otras páginas ======
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -417,154 +412,6 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // ====== RATE LIMITING ======
-    let formSubmissionCount = parseInt(localStorage.getItem('formSubmissionCount') || '0');
-    const maxSubmissions = 3;
-    const resetTime = 15 * 60 * 1000; // 15 minutos
-    
-    function checkSubmissionLimit() {
-        const now = Date.now();
-        const lastReset = parseInt(localStorage.getItem('lastFormReset') || '0');
-        
-        if (now - lastReset > resetTime) {
-            formSubmissionCount = 0;
-            localStorage.setItem('formSubmissionCount', '0');
-            localStorage.setItem('lastFormReset', now.toString());
-        }
-        
-        if (formSubmissionCount >= maxSubmissions) {
-            showNotification('Has enviado muchos mensajes recientemente. Por favor espera un poco.', 'warning');
-            return false;
-        }
-        
-        return true;
-    }
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            if (!checkSubmissionLimit()) {
-                e.preventDefault();
-                return false;
-            }
-            formSubmissionCount++;
-            localStorage.setItem('formSubmissionCount', formSubmissionCount.toString());
-        });
-    }
-    
-    // ====== ANALYTICS TRACKING ======
-    function trackEvent(action, category = 'Contact') {
-        // Google Analytics 4
-        if (typeof gtag !== 'undefined') {
-            gtag('event', action, {
-                'event_category': category,
-                'event_label': 'Contact Page'
-            });
-        }
-        
-        // Facebook Pixel
-        if (typeof fbq !== 'undefined') {
-            fbq('track', action);
-        }
-        
-        console.log(`Event tracked: ${category} - ${action}`);
-    }
-    
-    // Track contact method clicks
-    document.querySelectorAll('.contact-card').forEach(card => {
-        card.addEventListener('click', function() {
-            const method = this.querySelector('h3').textContent;
-            trackEvent(`click_${method.toLowerCase()}`, 'Contact Method');
-        });
-    });
-    
-    // Track form submission
-    if (contactForm) {
-        contactForm.addEventListener('submit', function() {
-            trackEvent('form_submit', 'Contact Form');
-        });
-    }
-    
-    // Track social media clicks
-    document.querySelectorAll('.social-icons a, .social-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            const platform = this.querySelector('i').className.match(/fa-(\w+)/)?.[1];
-            if (platform) {
-                trackEvent(`social_${platform}`, 'Social Media');
-            }
-        });
-    });
-    
-    // ====== ACCESSIBILITY IMPROVEMENTS ======
-    
-    // Añadir soporte para navegación por teclado
-    document.addEventListener('keydown', function(e) {
-        // Cerrar menú mobile con Escape
-        if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
-            mobileMenuBtn.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
-    
-    // Mejorar focus visible
-    const focusableElements = document.querySelectorAll(
-        'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])'
-    );
-    
-    focusableElements.forEach(element => {
-        element.addEventListener('focus', function() {
-            this.setAttribute('data-focus-visible', 'true');
-        });
-        
-        element.addEventListener('blur', function() {
-            this.removeAttribute('data-focus-visible');
-        });
-    });
-    
-    // ====== PERFORMANCE OPTIMIZATIONS ======
-    
-    // Lazy load del mapa
-    const mapIframe = document.querySelector('.map-container iframe');
-    if (mapIframe) {
-        const mapObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // El iframe ya está cargado, pero aquí podrías implementar lazy loading
-                    mapObserver.unobserve(entry.target);
-                }
-            });
-        });
-        mapObserver.observe(mapIframe);
-    }
-    
-    // Debounce para eventos de input
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-    
-    // Aplicar debounce a la validación en tiempo real
-    inputs.forEach(input => {
-        const debouncedValidation = debounce(() => validateSingleField(input), 500);
-        input.addEventListener('input', debouncedValidation);
-    });
-    
-    // ====== ERROR HANDLING ======
-    window.addEventListener('error', function(e) {
-        console.error('JavaScript Error:', e.error);
-        showNotification('Ha ocurrido un error. Por favor recarga la página.', 'error');
-    });
-    
-    // ====== INITIALIZATION COMPLETE ======
     console.log('✅ CREACOM Contact Page - JavaScript cargado correctamente');
     console.log('📱 Mobile optimizations enabled');
-    console.log('🎯 Analytics tracking enabled');
-    console.log('♿ Accessibility features enabled');
 });

@@ -3,42 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contáctanos - CREACOM</title>
+    <title>Contáctanos - CreaCom</title>
     <link rel="stylesheet" href="styles/contactanos.css">
     <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
+    <!-- Header - Igual que inicio y proyectos -->
+    <header id="header">
         <div class="container">
-            <div class="nav-wrapper">
-                <div class="logo">
-                    <img src="logo-creacom.png" alt="CREACOM Logo">
-                    <span class="logo-text">CREACOM</span>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                
-                <!-- Navigation Menu -->
-                <nav class="nav-menu" id="navMenu">
-                    <a href="index.html">Inicio</a>
-                    <a href="proyecto.html">Proyectos</a>
-                    <a href="contactano.html" class="active">Contáctanos</a>
+            <div class="logo">
+                <img src="imagenes/creacomlogo.jpeg" alt="CreaCom Logo">
+            </div>
+            
+            <!-- Menú hamburguesa (se mostrará automáticamente en mobile) -->
+            <div id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <div class="nav-content">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="proyecto.html">Proyectos</a></li>
+                        <li><a href="contactanos.html" class="contact-btn">Contáctanos</a></li>
+                    </ul>
                 </nav>
-                
-                <div class="social-icons">
+                <div class="header-social">
                     <a href="https://wa.me/593968188499" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://tiktok.com/@creacom" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://instagram.com/creacom" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/company/creacom" target="_blank"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
@@ -101,7 +100,7 @@
                         <h3>Nuestra Ubicación</h3>
                         <div class="map-container">
                             <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.817654321!2d-79.65123456789!3d-1.23456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sEl%20Empalme%2C%20Ecuador!5e0!3m2!1ses!2sec!4v1234567890"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.817654321!2d-79.65123456789!3d-1.23456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMTQnMDQuNCJTIDc5wrAzOScwNC40Ilc!5e0!3m2!1ses!2sec!4v1234567890"
                                 width="100%" 
                                 height="400" 
                                 style="border:0;" 
@@ -200,43 +199,42 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Footer - Igual que inicio y proyectos -->
+    <footer id="contacto">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section logo-section">
-                    <div class="footer-logo">
-                        <img src="logo-creacom.png" alt="CREACOM">
-                        <h3>CreaCom</h3>
-                    </div>
+                <div class="footer-logo">
+                    <img src="imagenes/creacomlogo.jpeg" alt="CreaCom Logo">
+                    <h3>CreaCom Constructora</h3>
                 </div>
-                
-                <div class="footer-section nav-section">
+                <div class="footer-nav">
                     <h4>Navegación</h4>
                     <ul>
                         <li><a href="index.html">Inicio</a></li>
-                        <li><a href="proyectos.html">Proyectos</a></li>
+                        <li><a href="proyecto.html">Proyectos</a></li>
                         <li><a href="contactanos.html">Contáctanos</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-section contact-section">
+                <div class="footer-contact">
                     <h4>Contacto</h4>
-                    <ul>
-                        <li><i class="fas fa-phone"></i> +593 968 188 499</li>
-                        <li><i class="fas fa-envelope"></i> administracion@creacomsa.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> El Empalme, Ecuador</li>
-                    </ul>
+                    <div class="contact-item">
+                        <a href="tel:+593968188499"><i class="fas fa-phone"></i> +593 968 188 499</a>
+                    </div>
+                    <div class="contact-item">
+                        <a href="mailto:administracion@creacomsa.com"><i class="fas fa-envelope"></i> administracion@creacomsa.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i> El Empalme, Guayas, Ecuador
+                    </div>
                 </div>
-                
-                <div class="footer-section social-section">
+                <div class="footer-social">
                     <h4>Síguenos</h4>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/593968188499"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://facebook.com/creacom" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://linkedin.com/company/creacom" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://tiktok.com/@creacom" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://instagram.com/creacom" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/593968188499" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
