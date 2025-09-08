@@ -488,3 +488,15 @@ footer {
         padding: 60px 0;
     }
 }
+/* ...tu CSS original arriba... */
+
+/* Footer NAV & CONTACT Hover efecto rojo */
+.footer-nav a:hover,
+.contact-item a:hover,
+.footer-contact .ubicacion:hover,
+.footer-contact .ubicacion:hover i {
+    color: var(--primary-color) !important;
+    transition: color 0.3s;
+}
+
+/* ...el resto de tu CSS sigue igual... */
