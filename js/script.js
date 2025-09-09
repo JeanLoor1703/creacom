@@ -1,18 +1,23 @@
-// Menu móvil
-document.getElementById('menuToggle').addEventListener('click', function () {
-    document.getElementById('navContent').classList.toggle('active');
-    this.classList.toggle('active');
+// ========= MENÚ HAMBURGUESA =========
+document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.getElementById('menuToggle');
+    const navContent = document.getElementById('navContent');
+    if (menuToggle && navContent) {
+        menuToggle.addEventListener('click', function () {
+            navContent.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        // Cerrar menú al hacer click en un enlace
+        navContent.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navContent.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    }
 });
 
-// Cerrar menú al hacer click en un enlace
-document.querySelectorAll('.nav-content a').forEach(link => {
-    link.addEventListener('click', () => {
-        document.getElementById('navContent').classList.remove('active');
-        document.getElementById('menuToggle').classList.remove('active');
-    });
-});
-
-// Scroll Header Effect
+// ======= SCROLL HEADER EFFECT =======
 window.addEventListener('scroll', () => {
     const header = document.getElementById('header');
     if (window.scrollY > 50) {
@@ -24,11 +29,8 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Scroll Animation
-const observerOptions = {
-    threshold: 0.1
-};
-
+// ======= SCROLL ANIMATION =======
+const observerOptions = { threshold: 0.1 };
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -36,25 +38,22 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, observerOptions);
-
 document.querySelectorAll('.fade-in, .slide-in').forEach((element) => {
     observer.observe(element);
 });
 
-// Smooth Scroll
+// ======= SMOOTH SCROLL =======
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
 
-// Hero Slideshow - Cambio automático cada 20 segundos
+// ======= HERO SLIDESHOW =======
 document.addEventListener('DOMContentLoaded', function () {
     const slides = document.querySelectorAll('.slide');
     let currentSlide = 0;
@@ -73,6 +72,5 @@ document.addEventListener('DOMContentLoaded', function () {
         showSlide(currentSlide);
     }
 
-    // Cambiar imagen automáticamente cada 20 segundos
     setInterval(nextSlide, 20000);
 });
