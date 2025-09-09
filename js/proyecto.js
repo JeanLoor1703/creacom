@@ -23,7 +23,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Menú de hamburguesa
+// Menú de hamburguesa y animación de cards
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('#menuToggle');
     const navContent = document.querySelector('#navContent');
