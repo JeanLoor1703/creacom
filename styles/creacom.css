@@ -312,37 +312,72 @@ footer {
     transition: color 0.3s ease;
 }
 
-/* Alineación y estilo de los íconos y texto en el contacto */
-.footer-contact .contact-item {
-    display: flex;
-    align-items: center;  /* Alinea el icono y el texto en la misma línea */
-    gap: 10px;  /* Espacio entre el ícono y el texto */
+.contact-item {
     margin-bottom: 15px;
-    word-break: break-all; /* Para que el mail se parta bonito si es necesario */
 }
 
-.footer-contact .contact-item i {
-    font-size: 1.3rem;
-    color: var(--primary-color);  /* Ajusta el color del ícono si es necesario */
-}
-
-.footer-contact .contact-item a,
-.footer-contact .contact-item span {
-    font-size: 1rem;
+.contact-item a {
     color: var(--text-color);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-/* Footer NAV & CONTACT Hover efecto rojo */
-.footer-nav a:hover,
-.contact-item a:hover,
-.footer-contact .ubicacion:hover,
-.footer-contact .ubicacion:hover i {
-    color: var(--primary-color) !important;
-    transition: color 0.3s;
+.contact-item i {
+    margin-right: 8px;
+    color: var(--primary-color);
 }
 
-/* Si es necesario, ajustar en pantallas pequeñas */
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 50%;
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.social-links a:hover {
+    color: var(--white);
+    background: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+.slide-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+}
+
+.slide-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -394,10 +429,6 @@ footer {
     .footer-content {
         grid-template-columns: 1fr 1fr;
         gap: 30px;
-    }
-
-    .footer-contact .contact-item {
-        gap: 8px;  /* Menor espacio en pantallas pequeñas */
     }
 }
 
@@ -465,52 +496,31 @@ footer {
     }
 }
 
-/* Animations */
-.fade-in {
-    opacity: 0;
-    transition: opacity 1s ease-in;
-}
+/* ...tu CSS original arriba... */
 
-.slide-in {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s ease-out;
+/* Footer NAV & CONTACT Hover efecto rojo */
+.footer-nav a:hover,
+.contact-item a:hover,
+.footer-contact .ubicacion:hover,
+.footer-contact .ubicacion:hover i {
+    color: var(--primary-color) !important;
+    transition: color 0.3s;
 }
-
-.fade-in.visible {
-    opacity: 1;
-}
-
-.slide-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Menu Toggle Button */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-}
-
-.social-links {
+.footer-contact .contact-item {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 8px; /* Espacio entre icono y texto */
+    margin-bottom: 15px;
+    word-break: break-all; /* Para que el mail se parta bonito si es necesario */
 }
 
-.social-links a {
+.footer-contact .contact-item a,
+.footer-contact .contact-item span {
+    font-size: 1rem;
     color: var(--text-color);
-    font-size: 1.5rem;
-    transition: all 0.3s ease;
-    padding: 8px;
-    border-radius: 50%;
-    background: rgba(255, 0, 0, 0.1);
+    text-decoration: none;
+    /* Puedes agregar más estilos si quieres */
 }
-
-.social-links a:hover {
-    color: var(--white);
-    background: var(--primary-color);
-    transform: translateY(-3px);
+.footer-contact .contact-item {
+    align-items: flex-start;
 }
