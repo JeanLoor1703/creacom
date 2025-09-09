@@ -26,7 +26,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Menú de hamburguesa
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('#menuToggle');
-    const navContent = document.querySelector('.nav-content');
+    const navContent = document.querySelector('#navContent');
     
     if (menuToggle && navContent) {
         // Toggle del menú hamburguesa
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Cerrar menú al hacer click en un enlace
-        const navLinks = document.querySelectorAll('nav a');
+        const navLinks = navContent.querySelectorAll('nav a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');

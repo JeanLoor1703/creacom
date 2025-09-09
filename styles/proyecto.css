@@ -52,7 +52,6 @@ nav a:hover { color: var(--primary-color); }
 .header-social a { color: var(--text-color); font-size: 1.5rem; transition: color 0.3s ease; }
 .header-social a:hover { color: var(--primary-color); }
 
-/* Hamburguesa Unificada */
 .menu-toggle {
     display: none;
     background: none;
@@ -62,7 +61,7 @@ nav a:hover { color: var(--primary-color); }
 }
 .menu-toggle i { font-size: 24px; color: var(--text-color); }
 
-/* Responsive Menu */
+/* ============ MOBILE MENU FIX ============ */
 @media (max-width: 767px) {
     #header { padding: 15px 0; }
     .logo img { height: 60px; }
@@ -77,7 +76,7 @@ nav a:hover { color: var(--primary-color); }
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 50px 20px;
+        padding: 50px 20px 30px 20px;
         transition: all 0.3s ease;
         z-index: 1000;
     }
@@ -88,9 +87,8 @@ nav a:hover { color: var(--primary-color); }
     .header-social { margin-top: 30px; gap: 20px; }
     .header-social a { font-size: 1.8rem; }
     main { padding-top: 100px; }
+    body.no-scroll { overflow: hidden; }
 }
-
-/* Resto de tu CSS igual... */
 
 /* Projects Grid */
 main {
@@ -281,8 +279,6 @@ footer {
 }
 
 /* ==== RESPONSIVE DESIGN ==== */
-
-/* TABLET (768px - 1199px) */
 @media (max-width: 1199px) and (min-width: 768px) {
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -294,7 +290,6 @@ footer {
     }
 }
 
-/* MOBILE (menos de 768px) */
 @media (max-width: 767px) {
     .projects-grid {
         grid-template-columns: 1fr;
@@ -314,7 +309,6 @@ footer {
     }
 }
 
-/* MOBILE EXTRA SMALL (menos de 480px) */
 @media (max-width: 479px) {
     .container {
         padding: 0 15px;
@@ -348,7 +342,6 @@ footer {
     }
 }
 
-/* LARGE SCREENS (más de 1200px) */
 @media (min-width: 1200px) {
     .projects-grid {
         grid-template-columns: repeat(3, 1fr);
