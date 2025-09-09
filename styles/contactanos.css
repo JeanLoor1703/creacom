@@ -452,7 +452,44 @@ body.no-scroll {
     font-size: 0.95rem;
 }
 
-/* Footer - Igual que inicio y proyectos */
+/* --- Footer alineación y estilos --- */
+.footer-contact .contact-item {
+    display: flex;
+    align-items: center;  /* Ícono y texto/enlace en la misma línea */
+    gap: 10px;            /* Espacio entre ícono y texto */
+    margin-bottom: 15px;
+    word-break: break-all; /* Para el correo largo */
+}
+
+.footer-contact .contact-item i {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+}
+
+.footer-contact .contact-item a,
+.footer-contact .contact-item span {
+    font-size: 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+/* Hover efecto rojo para links en el footer */
+.footer-nav a:hover,
+.contact-item a:hover,
+.footer-contact .ubicacion:hover,
+.footer-contact .ubicacion:hover i {
+    color: var(--primary-color) !important;
+    transition: color 0.3s;
+}
+
+/* Responsive: menos espacio entre ícono y texto en móvil */
+@media (max-width: 767px) {
+    .footer-contact .contact-item {
+        gap: 8px;
+    }
+}
+
+/* Footer estilos generales */
 footer {
     background: #f0f0f0;
     color: var(--text-color);
@@ -507,26 +544,6 @@ footer {
     color: var(--primary-color);
 }
 
-.contact-item {
-    margin-bottom: 15px;
-}
-
-.contact-item a {
-    color: var(--text-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.contact-item a:hover {
-    color: var(--primary-color);
-}
-
-.contact-item i {
-    margin-right: 8px;
-    width: 16px;
-    color: var(--primary-color);
-}
-
 .social-links {
     display: flex;
     gap: 15px;
@@ -555,12 +572,10 @@ footer {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
-    
     .info-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
-    
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
@@ -572,20 +587,16 @@ footer {
     .container {
         padding: 0 15px;
     }
-
     /* Header responsive */
     .logo img {
         height: 60px;
     }
-    
     #header {
         padding: 15px 0;
     }
-    
     #menuToggle {
         display: flex;
     }
-    
     .nav-content {
         position: fixed;
         top: 0;
@@ -600,122 +611,91 @@ footer {
         transition: all 0.3s ease;
         z-index: 1000;
     }
-    
     .nav-content.active {
         right: 0;
     }
-    
     nav ul {
         flex-direction: column;
         align-items: center;
         gap: 25px;
     }
-    
     nav a {
         font-size: 1.5rem;
     }
-    
     .contact-btn {
         padding: 15px 30px !important;
         font-size: 1.3rem !important;
     }
-    
     .header-social {
         margin-top: 30px;
         gap: 20px;
     }
-    
     .header-social a {
         font-size: 1.8rem;
     }
-
-    /* Main content */
     .main-content {
         padding-top: 100px;
     }
-
-    /* Hero Mobile */
     .hero-contact {
         padding: 2.5rem 0;
     }
-
     .hero-contact h1 {
         font-size: 2rem;
     }
-
     .hero-contact p {
         font-size: 1rem;
     }
-
-    /* Contact Cards Mobile */
     .contact-methods {
         padding: 3rem 0;
     }
-
     .contact-methods h2 {
         font-size: 1.75rem;
         margin-bottom: 2rem;
     }
-
     .contact-cards {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
     }
-
     .contact-card {
         max-width: 100%;
         min-width: auto;
         padding: 1.5rem;
     }
-
-    /* Form and Map Mobile */
     .form-map-section {
         padding: 3rem 0;
     }
-
     .form-map-wrapper {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-
     .map-column {
         order: 1;
     }
-
     .form-column {
         order: 2;
     }
-
     .contact-form {
         padding: 1.5rem;
     }
-
-    /* Additional Info Mobile */
     .additional-info {
         padding: 3rem 0;
     }
-
     .info-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-
     .info-card {
         padding: 1.5rem;
     }
-
-    /* Footer - 1 column in mobile */
     .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
         text-align: center;
     }
-    
     .footer-logo {
         text-align: center;
     }
-    
     .social-links {
         justify-content: center;
     }
@@ -726,54 +706,43 @@ footer {
     .logo img {
         height: 50px;
     }
-    
     .hero-contact {
         padding: 2rem 0;
     }
-
     .hero-contact h1 {
         font-size: 1.75rem;
     }
-
     .contact-methods,
     .form-map-section,
     .additional-info {
         padding: 2rem 0;
     }
-
     .contact-card {
         padding: 1.25rem;
         min-width: 240px;
     }
-
     .card-icon {
         font-size: 2rem;
     }
-
     .contact-form {
         padding: 1.25rem;
     }
-
     .form-group input,
     .form-group select,
     .form-group textarea {
         padding: 0.75rem;
     }
-
     .submit-btn {
         padding: 0.875rem 1.5rem;
         font-size: 0.95rem;
     }
-    
     nav a {
         font-size: 1.3rem;
     }
-    
     .contact-btn {
         padding: 12px 25px !important;
         font-size: 1.2rem !important;
     }
-    
     .header-social a {
         font-size: 1.6rem;
     }

@@ -289,24 +289,34 @@ footer {
     color: var(--primary-color);
 }
 
-.contact-item {
+/* CONTACTO: ícono y texto alineados en la misma línea */
+.footer-contact .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin-bottom: 15px;
+    word-break: break-all;
 }
 
-.contact-item a {
+.footer-contact .contact-item i {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+}
+
+.footer-contact .contact-item a,
+.footer-contact .contact-item span {
+    font-size: 1rem;
     color: var(--text-color);
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
-.contact-item a:hover {
-    color: var(--primary-color);
-}
-
-.contact-item i {
-    margin-right: 8px;
-    width: 16px;
-    color: var(--primary-color);
+/* Footer NAV & CONTACT Hover efecto rojo */
+.footer-nav a:hover,
+.contact-item a:hover,
+.footer-contact .ubicacion:hover,
+.footer-contact .ubicacion:hover i {
+    color: var(--primary-color) !important;
+    transition: color 0.3s;
 }
 
 .social-links {
@@ -348,7 +358,6 @@ footer {
 
 /* MOBILE (menos de 768px) */
 @media (max-width: 767px) {
-    /* Header responsive */
     .logo img {
         height: 60px;
     }
@@ -404,7 +413,6 @@ footer {
         font-size: 1.8rem;
     }
     
-    /* Main content */
     main {
         padding-top: 100px;
     }
@@ -414,14 +422,12 @@ footer {
         margin-bottom: 40px;
     }
     
-    /* Projects Grid - 1 column in mobile */
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 25px;
         padding: 0 15px;
     }
     
-    /* Footer - 1 column in mobile */
     .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -434,6 +440,10 @@ footer {
     
     .social-links {
         justify-content: center;
+    }
+    
+    .footer-contact .contact-item {
+        gap: 8px;
     }
 }
 
@@ -481,12 +491,9 @@ footer {
 
 /* LARGE SCREENS (más de 1200px) */
 @media (min-width: 1200px) {
-    /* Projects Grid - 3 columns in PC */
     .projects-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-    
-    /* Footer - 4 columns in PC */
     .footer-content {
         grid-template-columns: repeat(4, 1fr);
     }
