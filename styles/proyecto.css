@@ -22,7 +22,7 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     z-index: 1000;
     transition: all 0.3s ease;
-    top: 0; /* Asegura que siempre esté pegado arriba */
+    top: 0;
     left: 0;
 }
 #header .container {
@@ -88,16 +88,25 @@ nav a:hover { color: var(--primary-color); }
     .contact-btn { padding: 15px 30px !important; font-size: 1.3rem !important; }
     .header-social { margin-top: 30px; gap: 20px; }
     .header-social a { font-size: 1.8rem; }
-    main { padding-top: 100px; }
+    main { padding-top: 100px !important; }
     body.no-scroll { overflow: hidden; }
 }
 
 /* Projects Grid */
 main {
-    padding-top: 160px; /* IMPORTANTE para que el header fijo no tape el contenido */
+    padding-top: 160px;
     padding-bottom: 60px;
     background: var(--bg-light);
     min-height: 100vh;
+    transition: padding-top 0.3s;
+}
+
+/* Ajuste extra para evitar que el contenido quede tapado en móvil */
+@media (max-width: 767px) {
+    main { padding-top: 100px !important; }
+}
+@media (max-width: 479px) {
+    main { padding-top: 90px !important; }
 }
 
 .page-title {
@@ -202,12 +211,10 @@ footer {
 .footer-logo {
     text-align: left;
 }
-
 .footer-logo img {
     height: 60px;
     margin-bottom: 15px;
 }
-
 .footer-logo h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
@@ -225,17 +232,14 @@ footer {
 .footer-nav ul {
     list-style: none;
 }
-
 .footer-nav ul li {
     margin-bottom: 10px;
 }
-
 .footer-nav a {
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
-
 .footer-nav a:hover {
     color: var(--primary-color);
 }
@@ -243,17 +247,14 @@ footer {
 .contact-item {
     margin-bottom: 15px;
 }
-
 .contact-item a {
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
-
 .contact-item a:hover {
     color: var(--primary-color);
 }
-
 .contact-item i {
     margin-right: 8px;
     width: 16px;
@@ -264,7 +265,6 @@ footer {
     display: flex;
     gap: 15px;
 }
-
 .social-links a {
     color: var(--text-color);
     font-size: 1.5rem;
@@ -273,7 +273,6 @@ footer {
     border-radius: 50%;
     background: rgba(255, 0, 0, 0.1);
 }
-
 .social-links a:hover {
     color: var(--white);
     background: var(--primary-color);
@@ -291,7 +290,6 @@ footer {
         gap: 30px;
     }
 }
-
 @media (max-width: 767px) {
     .projects-grid {
         grid-template-columns: 1fr;
@@ -309,9 +307,7 @@ footer {
     .social-links {
         justify-content: center;
     }
-    main { padding-top: 100px; } /* MUY IMPORTANTE: que el header no tape el contenido */
 }
-
 @media (max-width: 479px) {
     .container {
         padding: 0 15px;
@@ -344,7 +340,6 @@ footer {
         font-size: 1.6rem;
     }
 }
-
 @media (min-width: 1200px) {
     .projects-grid {
         grid-template-columns: repeat(3, 1fr);
