@@ -22,6 +22,8 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     z-index: 1000;
     transition: all 0.3s ease;
+    top: 0; /* Asegura que siempre esté pegado arriba */
+    left: 0;
 }
 #header .container {
     display: flex;
@@ -92,7 +94,7 @@ nav a:hover { color: var(--primary-color); }
 
 /* Projects Grid */
 main {
-    padding-top: 160px;
+    padding-top: 160px; /* IMPORTANTE para que el header fijo no tape el contenido */
     padding-bottom: 60px;
     background: var(--bg-light);
     min-height: 100vh;
@@ -307,6 +309,7 @@ footer {
     .social-links {
         justify-content: center;
     }
+    main { padding-top: 100px; } /* MUY IMPORTANTE: que el header no tape el contenido */
 }
 
 @media (max-width: 479px) {
