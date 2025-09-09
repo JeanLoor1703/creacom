@@ -9,18 +9,9 @@
     --orange: #ff6b35;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
 /* Header Styles */
 #header {
@@ -32,43 +23,17 @@
     z-index: 1000;
     transition: all 0.3s ease;
 }
-
 #header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
 }
-
-.logo img {
-    height: 100px;
-    transition: height 0.3s ease;
-}
-
-.nav-content {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 600;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: var(--primary-color);
-}
-
+.logo img { height: 100px; transition: height 0.3s ease; }
+.nav-content { display: flex; align-items: center; gap: 40px; }
+nav ul { display: flex; list-style: none; gap: 30px; }
+nav a { text-decoration: none; color: var(--text-color); font-weight: 600; font-size: 1.2rem; transition: color 0.3s ease; }
+nav a:hover { color: var(--primary-color); }
 .contact-btn {
     background: transparent !important;
     color: var(--primary-color) !important;
@@ -79,68 +44,55 @@ nav a:hover {
     font-weight: 600;
     transition: all 0.3s ease;
 }
-
 .contact-btn:hover {
     background: var(--primary-color) !important;
     color: var(--white) !important;
 }
+.header-social { display: flex; gap: 15px; }
+.header-social a { color: var(--text-color); font-size: 1.5rem; transition: color 0.3s ease; }
+.header-social a:hover { color: var(--primary-color); }
 
-.header-social {
-    display: flex;
-    gap: 15px;
-}
-
-.header-social a {
-    color: var(--text-color);
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
-}
-
-.header-social a:hover {
-    color: var(--primary-color);
-}
-
-/* Hamburger Menu Styles */
-#menuToggle {
+/* Hamburguesa Unificada */
+.menu-toggle {
     display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 22px;
+    background: none;
+    border: none;
     cursor: pointer;
-    z-index: 1001;
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    padding: 10px;
+}
+.menu-toggle i { font-size: 24px; color: var(--text-color); }
+
+/* Responsive Menu */
+@media (max-width: 767px) {
+    #header { padding: 15px 0; }
+    .logo img { height: 60px; }
+    .menu-toggle { display: block; }
+    .nav-content {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: var(--white);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 20px;
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+    .nav-content.active { left: 0; }
+    nav ul { flex-direction: column; align-items: center; gap: 25px; }
+    nav a { font-size: 1.5rem; }
+    .contact-btn { padding: 15px 30px !important; font-size: 1.3rem !important; }
+    .header-social { margin-top: 30px; gap: 20px; }
+    .header-social a { font-size: 1.8rem; }
+    main { padding-top: 100px; }
 }
 
-#menuToggle span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: var(--text-color);
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
+/* Resto de tu CSS igual... */
 
-#menuToggle.active span:nth-child(1) {
-    transform: translateY(9.5px) rotate(45deg);
-}
-
-#menuToggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-#menuToggle.active span:nth-child(3) {
-    transform: translateY(-9.5px) rotate(-45deg);
-}
-
-body.no-scroll {
-    overflow: hidden;
-}
-
-/* Main Content */
+/* Projects Grid */
 main {
     padding-top: 160px;
     padding-bottom: 60px;
@@ -156,7 +108,6 @@ main {
     font-weight: 700;
 }
 
-/* Projects Grid */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -333,13 +284,10 @@ footer {
 
 /* TABLET (768px - 1199px) */
 @media (max-width: 1199px) and (min-width: 768px) {
-    /* Projects Grid - 2 columns in tablet */
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
     }
-    
-    /* Footer - 2 columns in tablet */
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
@@ -348,90 +296,19 @@ footer {
 
 /* MOBILE (menos de 768px) */
 @media (max-width: 767px) {
-    /* Header responsive */
-    .logo img {
-        height: 60px;
-    }
-    
-    #header {
-        padding: 15px 0;
-    }
-    
-    #menuToggle {
-        display: flex;
-    }
-    
-    .nav-content {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        background: var(--white);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 50px 20px;
-        transition: all 0.3s ease;
-        z-index: 1000;
-    }
-    
-    .nav-content.active {
-        right: 0;
-    }
-    
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-    }
-    
-    nav a {
-        font-size: 1.5rem;
-    }
-    
-    .contact-btn {
-        padding: 15px 30px !important;
-        font-size: 1.3rem !important;
-    }
-    
-    .header-social {
-        margin-top: 30px;
-        gap: 20px;
-    }
-    
-    .header-social a {
-        font-size: 1.8rem;
-    }
-    
-    /* Main content */
-    main {
-        padding-top: 100px;
-    }
-    
-    .page-title {
-        font-size: 2.2rem;
-        margin-bottom: 40px;
-    }
-    
-    /* Projects Grid - 1 column in mobile */
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 25px;
         padding: 0 15px;
     }
-    
-    /* Footer - 1 column in mobile */
     .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
         text-align: center;
     }
-    
     .footer-logo {
         text-align: center;
     }
-    
     .social-links {
         justify-content: center;
     }
@@ -442,38 +319,30 @@ footer {
     .container {
         padding: 0 15px;
     }
-    
     .logo img {
         height: 50px;
     }
-    
     .page-title {
         font-size: 1.8rem;
         margin-bottom: 30px;
     }
-    
     .projects-grid {
         padding: 0 10px;
         gap: 20px;
     }
-    
     .project-content {
         padding: 20px;
     }
-    
     .project-title {
         font-size: 1.2rem;
     }
-    
     nav a {
         font-size: 1.3rem;
     }
-    
     .contact-btn {
         padding: 12px 25px !important;
         font-size: 1.2rem !important;
     }
-    
     .header-social a {
         font-size: 1.6rem;
     }
@@ -481,12 +350,9 @@ footer {
 
 /* LARGE SCREENS (más de 1200px) */
 @media (min-width: 1200px) {
-    /* Projects Grid - 3 columns in PC */
     .projects-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-    
-    /* Footer - 4 columns in PC */
     .footer-content {
         grid-template-columns: repeat(4, 1fr);
     }
