@@ -7,6 +7,10 @@
     --gray: #888888;
     --light-gray: #f8f8f8;
     --orange: #ff6b35;
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
 }
 
 /* Reset y estilos base */
@@ -422,6 +426,7 @@ nav a:hover {
 
 .form-group {
     margin-bottom: 1.5rem;
+    position: relative;
 }
 
 .form-group label {
@@ -456,6 +461,43 @@ nav a:hover {
 .form-group textarea {
     resize: vertical;
     min-height: 120px;
+}
+
+/* Nuevos estilos para ejemplos y validación */
+.field-example {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    color: var(--gray);
+    font-style: italic;
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+    display: block;
+    font-weight: 500;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+    border-color: var(--error-color);
+    background-color: rgba(220, 53, 69, 0.05);
+}
+
+.form-group input.valid,
+.form-group select.valid,
+.form-group textarea.valid {
+    border-color: var(--success-color);
+    background-color: rgba(40, 167, 69, 0.05);
 }
 
 .submit-btn {
@@ -522,6 +564,42 @@ nav a:hover {
     color: var(--gray);
     line-height: 1.6;
     font-size: 0.95rem;
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    z-index: 10000;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.notification i {
+    margin-right: 12px;
+    font-size: 1.2rem;
+}
+
+.notification-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.notification-close:hover {
+    opacity: 1;
 }
 
 /* Footer - Igual que inicio y proyectos */
@@ -811,85 +889,6 @@ footer {
     .contact-btn-mobile {
         padding: 10px 25px;
         font-size: 1.4rem;
-    }
-}
-
-/* Estilos para notificaciones de error */
-.error-message {
-    color: #dc3545;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-    display: block;
-}
-
-.form-group input.error,
-.form-group select.error,
-.form-group textarea.error {
-    border-color: #dc3545;
-}
-
-/* Loading state */
-.submit-btn:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-/* Animaciones y transiciones mejoradas */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.contact-card,
-.info-card,
-.contact-form,
-.map-container {
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-/* Estados de focus mejorados para accesibilidad */
-nav a:focus,
-.contact-card:focus,
-.submit-btn:focus,
-.header-social a:focus,
-.social-links a:focus,
-.mobile-nav a:focus,
-.mobile-social a:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-}
-
-/* Estilos para el body cuando el menú está activo */
-body.no-scroll {
-    overflow: hidden;
-}
-
-/* Animación de slide para notificaciones */
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideOut {
-    from {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateX(100%);
-        opacity: 0;
     }
 }
 
