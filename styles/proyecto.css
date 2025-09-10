@@ -65,20 +65,28 @@ nav a:hover { color: var(--primary-color); }
 
 /* ============ MOBILE MENU FIX ============ */
 @media (max-width: 767px) {
+    /* Corrección del header en móvil */
     #header { 
         padding: 15px 0; 
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
     }
     
+    /* Asegurar que el contenedor del header mantenga el layout correcto */
     #header .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
     }
     
+    /* El logo debe estar siempre visible y por encima del menú desplegable */
     .logo { 
         display: block;
         position: relative;
-        z-index: 1001; /* Mayor que el z-index del nav-content */
+        z-index: 1100;
     }
     
     .logo img { 
@@ -86,12 +94,14 @@ nav a:hover { color: var(--primary-color); }
         display: block;
     }
     
+    /* El botón de menú también debe estar siempre visible */
     .menu-toggle { 
         display: block;
         position: relative;
-        z-index: 1001; /* Mayor que el z-index del nav-content */
+        z-index: 1100;
     }
     
+    /* Menú desplegable ajustado */
     .nav-content {
         position: fixed;
         top: 0;
@@ -100,19 +110,38 @@ nav a:hover { color: var(--primary-color); }
         height: 100vh;
         background: var(--white);
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start; /* Alineamos desde arriba */
         align-items: center;
-        padding: 50px 20px 30px 20px;
+        padding-top: 100px; /* Espacio para el logo y menú */
+        padding-bottom: 30px;
         transition: all 0.3s ease;
-        z-index: 1000;
+        z-index: 1050;
+        overflow-y: auto;
     }
     
     .nav-content.active { left: 0; }
-    nav ul { flex-direction: column; align-items: center; gap: 25px; }
+    
+    /* Ajustamos los enlaces de navegación */
+    nav ul { 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 25px; 
+        margin-top: 20px; /* Espacio adicional desde la parte superior */
+    }
+    
     nav a { font-size: 1.5rem; }
     .contact-btn { padding: 15px 30px !important; font-size: 1.3rem !important; }
-    .header-social { margin-top: 30px; gap: 20px; }
+    
+    /* Movemos los iconos sociales más arriba */
+    .header-social { 
+        margin-top: 30px; 
+        gap: 20px; 
+        order: 3; /* Aseguramos que aparezca después de los enlaces */
+    }
+    
     .header-social a { font-size: 1.8rem; }
+    
+    /* Ajuste del contenido principal para que no quede debajo del header */
     main { padding-top: 100px !important; }
     body.no-scroll { overflow: hidden; }
 }
