@@ -415,3 +415,68 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('✅ CREACOM Contact Page - JavaScript cargado correctamente');
     console.log('📱 Mobile optimizations enabled');
 });
+// Funcionalidad mejorada para la página de contacto de CREACOM
+// Optimizado para mobile y experiencia de usuario moderna
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Elementos principales
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.querySelector('.submit-btn');
+    const menuToggle = document.querySelector('#menuToggle');
+    const navContent = document.querySelector('.nav-content');
+    
+    // ====== MOBILE MENU FUNCTIONALITY ======
+    if (menuToggle && navContent) {
+        // Toggle del menú hamburguesa
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            this.classList.toggle('active');
+            navContent.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        });
+        
+        // Cerrar menú al hacer click en un enlace
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navContent.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+        });
+        
+        // Cerrar menú al hacer click fuera del header
+        document.addEventListener('click', (e) => {
+            const header = document.getElementById('header');
+            if (!header.contains(e.target) && navContent.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navContent.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            }
+        });
+        
+        // Cerrar menú al redimensionar la ventana
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 767) {
+                menuToggle.classList.remove('active');
+                navContent.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            }
+        });
+    }
+    
+    // ====== SCROLL HEADER EFFECT ======
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        if (window.scrollY > 50) {
+            header.style.padding = '15px 0';
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+        } else {
+            header.style.padding = '20px 0';
+            header.style.background = '#ffffff';
+        }
+    });
+    
+    // El resto del código JavaScript sin cambios...
+});

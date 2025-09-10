@@ -109,6 +109,46 @@ nav a:hover {
     color: var(--primary-color);
 }
 
+/* Mobile Navigation Links and Social Icons */
+.mobile-nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 0 30px 0;
+}
+
+.mobile-nav-links a {
+    display: block;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin: 10px 0;
+    padding: 5px 0;
+}
+
+.contact-btn-mobile {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 10px 25px;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+.mobile-social-icons {
+    display: none;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.mobile-social-icons a {
+    color: var(--text-color);
+    font-size: 1.8rem;
+}
+
 /* Hamburger Menu Styles */
 #menuToggle {
     display: none;
@@ -633,6 +673,15 @@ footer {
     .main-content {
         padding-top: 100px;
     }
+    
+    /* Show mobile navigation and social icons */
+    .mobile-nav-links {
+        display: flex;
+    }
+    
+    .mobile-social-icons {
+        display: flex;
+    }
 
     /* Hero Mobile */
     .hero-contact {
@@ -649,7 +698,7 @@ footer {
 
     /* Contact Cards Mobile */
     .contact-methods {
-        padding: 3rem 0;
+        padding: 2rem 0;
     }
 
     .contact-methods h2 {
@@ -756,85 +805,4 @@ footer {
 
     .form-group input,
     .form-group select,
-    .form-group textarea {
-        padding: 0.75rem;
-    }
-
-    .submit-btn {
-        padding: 0.875rem 1.5rem;
-        font-size: 0.95rem;
-    }
     
-    nav a {
-        font-size: 1.3rem;
-    }
-    
-    .contact-btn {
-        padding: 12px 25px !important;
-        font-size: 1.2rem !important;
-    }
-    
-    .header-social a {
-        font-size: 1.6rem;
-    }
-}
-
-/* Estilos para notificaciones de error */
-.error-message {
-    color: #dc3545;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-    display: block;
-}
-
-.form-group input.error,
-.form-group select.error,
-.form-group textarea.error {
-    border-color: #dc3545;
-}
-
-/* Loading state */
-.submit-btn:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-/* Animaciones y transiciones mejoradas */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.contact-card,
-.info-card,
-.contact-form,
-.map-container {
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-/* Mejoras de accesibilidad */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-/* Estados de focus mejorados para accesibilidad */
-nav a:focus,
-.contact-card:focus,
-.submit-btn:focus,
-.header-social a:focus,
-.social-links a:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-}
