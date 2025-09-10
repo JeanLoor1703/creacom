@@ -113,7 +113,7 @@ nav a:hover { color: var(--primary-color); }
     .contact-btn { padding: 15px 30px !important; font-size: 1.3rem !important; }
     .header-social { margin-top: 30px; gap: 20px; }
     .header-social a { font-size: 1.8rem; }
-    main { padding-top: 100px !important; }
+    main { padding-top: 120px !important; } /* MODIFICADO: Aumento de espacio superior */
     body.no-scroll { overflow: hidden; }
 }
 
@@ -183,6 +183,8 @@ nav a:hover { color: var(--primary-color); }
     .page-title {
         margin-top: 20px !important;
         margin-bottom: 30px !important;
+        font-size: 2.2rem; /* MODIFICADO: Tamaño de título ajustado */
+        padding: 0 15px; /* MODIFICADO: Padding añadido */
     }
 }
 
@@ -197,10 +199,10 @@ main {
 
 /* Ajuste extra para evitar que el contenido quede tapado en móvil */
 @media (max-width: 767px) {
-    main { padding-top: 100px !important; }
+    main { padding-top: 120px !important; } /* MODIFICADO: Aumento de espacio superior */
 }
 @media (max-width: 479px) {
-    main { padding-top: 90px !important; }
+    main { padding-top: 100px !important; }
 }
 
 .page-title {
@@ -388,8 +390,30 @@ footer {
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 25px;
-        padding: 0 15px;
+        padding: 0;
+        margin: 0 15px; /* MODIFICADO: Añadido margen horizontal */
     }
+    
+    .project-card {
+        width: 100%;
+        margin-bottom: 20px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08); /* MODIFICADO: Sombra más sutil */
+    }
+    
+    .project-content {
+        padding: 20px; /* MODIFICADO: Padding ajustado */
+    }
+    
+    .project-title {
+        font-size: 1.3rem; /* MODIFICADO: Tamaño ajustado */
+        line-height: 1.4; /* MODIFICADO: Mejor espaciado de línea */
+    }
+    
+    .project-category {
+        font-size: 0.9rem; /* MODIFICADO: Tamaño ajustado */
+        margin-bottom: 10px; /* MODIFICADO: Margen reducido */
+    }
+    
     .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -402,7 +426,7 @@ footer {
         justify-content: center;
     }
 }
-@media (max-width: 479px) {
+@media (max-width: 480px) {
     .container {
         padding: 0 15px;
     }
@@ -414,14 +438,18 @@ footer {
         margin-bottom: 30px;
     }
     .projects-grid {
-        padding: 0 10px;
+        padding: 0;
         gap: 20px;
     }
     .project-content {
-        padding: 20px;
+        padding: 15px; /* MODIFICADO: Padding reducido */
     }
     .project-title {
         font-size: 1.2rem;
+        margin-bottom: 8px; /* MODIFICADO: Margen ajustado */
+    }
+    .project-category {
+        font-size: 0.85rem; /* MODIFICADO: Tamaño reducido */
     }
     nav a {
         font-size: 1.3rem;
@@ -432,6 +460,25 @@ footer {
     }
     .header-social a {
         font-size: 1.6rem;
+    }
+    
+    /* MODIFICADO: Mejoras para el footer en móvil */
+    .footer-content {
+        text-align: center;
+    }
+    
+    .footer-logo, .social-links {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+    }
+    
+    .footer-logo img {
+        margin: 0 auto 15px;
+    }
+    
+    .contact-item {
+        justify-content: center;
     }
 }
 @media (min-width: 1200px) {
