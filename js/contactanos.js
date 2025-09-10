@@ -1,4 +1,4 @@
-// Funcionalidad mejorada para la página de contacto de CREACOM
+// Funcionalidad para la página de contacto de CREACOM
 // Optimizado para mobile y experiencia de usuario moderna
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -6,50 +6,39 @@ document.addEventListener('DOMContentLoaded', function() {
     // Elementos principales
     const contactForm = document.getElementById('contactForm');
     const submitBtn = document.querySelector('.submit-btn');
-    const menuToggle = document.querySelector('#menuToggle');
-    const navContent = document.querySelector('.nav-content');
+    const menuToggle = document.getElementById('menuToggle');
+    const navContent = document.getElementById('navContent');
+    const mobileMenu = document.getElementById('mobileMenu');
     
-    // ====== MOBILE MENU FUNCTIONALITY - Igual que otras páginas ======
-    if (menuToggle && navContent) {
-        // Toggle del menú hamburguesa
-        menuToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
+    // ====== MOBILE MENU FUNCTIONALITY ======
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
             this.classList.toggle('active');
-            navContent.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
             document.body.classList.toggle('no-scroll');
         });
         
-        // Cerrar menú al hacer click en un enlace
-        const navLinks = document.querySelectorAll('nav a');
-        navLinks.forEach(link => {
+        // Cerrar menú al hacer click en un enlace del menú móvil
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
-                navContent.classList.remove('active');
+                mobileMenu.classList.remove('active');
                 document.body.classList.remove('no-scroll');
             });
-        });
-        
-        // Cerrar menú al hacer click fuera del header
-        document.addEventListener('click', (e) => {
-            const header = document.getElementById('header');
-            if (!header.contains(e.target) && navContent.classList.contains('active')) {
-                menuToggle.classList.remove('active');
-                navContent.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            }
         });
         
         // Cerrar menú al redimensionar la ventana
         window.addEventListener('resize', () => {
             if (window.innerWidth > 767) {
                 menuToggle.classList.remove('active');
-                navContent.classList.remove('active');
+                mobileMenu.classList.remove('active');
                 document.body.classList.remove('no-scroll');
             }
         });
     }
     
-    // ====== SCROLL HEADER EFFECT - Igual que otras páginas ======
+    // ====== SCROLL HEADER EFFECT ======
     window.addEventListener('scroll', () => {
         const header = document.getElementById('header');
         if (window.scrollY > 50) {
@@ -374,109 +363,5 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCharacterCounter();
     }
     
-    // ====== SMOOTH SCROLLING - Igual que otras páginas ======
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-    
-    // ====== INTERSECTION OBSERVER ANIMATIONS - Igual que otras páginas ======
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-    
-    // Elementos para animar
-    const animatedElements = document.querySelectorAll('.contact-card, .info-card, .contact-form, .map-container');
-    animatedElements.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-        observer.observe(el);
-    });
-    
     console.log('✅ CREACOM Contact Page - JavaScript cargado correctamente');
-    console.log('📱 Mobile optimizations enabled');
-});
-// Funcionalidad mejorada para la página de contacto de CREACOM
-// Optimizado para mobile y experiencia de usuario moderna
-
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // Elementos principales
-    const contactForm = document.getElementById('contactForm');
-    const submitBtn = document.querySelector('.submit-btn');
-    const menuToggle = document.querySelector('#menuToggle');
-    const navContent = document.querySelector('.nav-content');
-    
-    // ====== MOBILE MENU FUNCTIONALITY ======
-    if (menuToggle && navContent) {
-        // Toggle del menú hamburguesa
-        menuToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            this.classList.toggle('active');
-            navContent.classList.toggle('active');
-            document.body.classList.toggle('no-scroll');
-        });
-        
-        // Cerrar menú al hacer click en un enlace
-        const navLinks = document.querySelectorAll('nav a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navContent.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            });
-        });
-        
-        // Cerrar menú al hacer click fuera del header
-        document.addEventListener('click', (e) => {
-            const header = document.getElementById('header');
-            if (!header.contains(e.target) && navContent.classList.contains('active')) {
-                menuToggle.classList.remove('active');
-                navContent.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            }
-        });
-        
-        // Cerrar menú al redimensionar la ventana
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 767) {
-                menuToggle.classList.remove('active');
-                navContent.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            }
-        });
-    }
-    
-    // ====== SCROLL HEADER EFFECT ======
-    window.addEventListener('scroll', () => {
-        const header = document.getElementById('header');
-        if (window.scrollY > 50) {
-            header.style.padding = '15px 0';
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
-        } else {
-            header.style.padding = '20px 0';
-            header.style.background = '#ffffff';
-        }
-    });
-    
-    // El resto del código JavaScript sin cambios...
 });

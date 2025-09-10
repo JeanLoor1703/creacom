@@ -23,6 +23,7 @@ body {
     background-color: var(--bg-light);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative; /* Para el menú móvil */
 }
 
 .container {
@@ -31,7 +32,7 @@ body {
     padding: 0 20px;
 }
 
-/* Header Styles - Igual que inicio y proyectos */
+/* Header Styles */
 #header {
     position: fixed;
     width: 100%;
@@ -109,59 +110,89 @@ nav a:hover {
     color: var(--primary-color);
 }
 
-/* Mobile Navigation Links and Social Icons */
-.mobile-nav-links {
-    display: none;
+/* Mobile Menu Styles */
+.mobile-menu {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 90px; /* Debajo del header */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 90px);
+    background: var(--white);
+    z-index: 999;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    margin: 0 0 30px 0;
-}
-
-.mobile-nav-links a {
-    display: block;
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 600;
-    font-size: 1.4rem;
-    margin: 10px 0;
-    padding: 5px 0;
-}
-
-.contact-btn-mobile {
-    background: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    padding: 10px 25px;
-    border-radius: 8px;
-    margin-top: 5px;
-}
-
-.mobile-social-icons {
-    display: none;
     justify-content: center;
-    gap: 25px;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
     margin-bottom: 40px;
 }
 
-.mobile-social-icons a {
+.mobile-nav a {
+    text-decoration: none;
     color: var(--text-color);
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
-/* Hamburger Menu Styles */
+.mobile-nav a:hover {
+    color: var(--primary-color);
+}
+
+.contact-btn-mobile {
+    color: var(--primary-color) !important;
+    border: 2px solid var(--primary-color);
+    padding: 12px 30px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.contact-btn-mobile:hover {
+    background: var(--primary-color);
+    color: var(--white) !important;
+}
+
+.mobile-social {
+    display: flex;
+    gap: 25px;
+}
+
+.mobile-social a {
+    color: var(--text-color);
+    font-size: 1.75rem;
+    transition: color 0.3s ease;
+}
+
+.mobile-social a:hover {
+    color: var(--primary-color);
+}
+
+/* Hamburger Menu */
 #menuToggle {
     display: none;
-    flex-direction: column;
-    justify-content: space-between;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
     width: 30px;
     height: 22px;
-    cursor: pointer;
+    position: relative;
     z-index: 1001;
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 #menuToggle span {
@@ -170,11 +201,16 @@ nav a:hover {
     width: 100%;
     background-color: var(--text-color);
     border-radius: 3px;
+    margin-bottom: 5px;
     transition: all 0.3s ease;
 }
 
+#menuToggle span:last-child {
+    margin-bottom: 0;
+}
+
 #menuToggle.active span:nth-child(1) {
-    transform: translateY(9.5px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
 }
 
 #menuToggle.active span:nth-child(2) {
@@ -182,11 +218,7 @@ nav a:hover {
 }
 
 #menuToggle.active span:nth-child(3) {
-    transform: translateY(-9.5px) rotate(-45deg);
-}
-
-body.no-scroll {
-    overflow: hidden;
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Main Content */
@@ -591,8 +623,8 @@ footer {
 
 /* TABLET (768px - 1199px) */
 @media (max-width: 1199px) and (min-width: 768px) {
-    .contact-cards {
-        grid-template-columns: repeat(2, 1fr);
+    .form-map-wrapper {
+        grid-template-columns: 1fr;
         gap: 2rem;
     }
     
@@ -609,6 +641,7 @@ footer {
 
 /* MOBILE (menos de 768px) */
 @media (max-width: 767px) {
+    /* Estructuras generales */
     .container {
         padding: 0 15px;
     }
@@ -623,64 +656,21 @@ footer {
     }
     
     #menuToggle {
-        display: flex;
+        display: block;
     }
     
     .nav-content {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        background: var(--white);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 50px 20px;
-        transition: all 0.3s ease;
-        z-index: 1000;
+        display: none;
     }
-    
-    .nav-content.active {
-        right: 0;
-    }
-    
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-    }
-    
-    nav a {
-        font-size: 1.5rem;
-    }
-    
-    .contact-btn {
-        padding: 15px 30px !important;
-        font-size: 1.3rem !important;
-    }
-    
-    .header-social {
-        margin-top: 30px;
-        gap: 20px;
-    }
-    
-    .header-social a {
-        font-size: 1.8rem;
+
+    /* Mostrar menú móvil cuando está activo */
+    .mobile-menu {
+        display: flex;
     }
 
     /* Main content */
     .main-content {
-        padding-top: 100px;
-    }
-    
-    /* Show mobile navigation and social icons */
-    .mobile-nav-links {
-        display: flex;
-    }
-    
-    .mobile-social-icons {
-        display: flex;
+        padding-top: 90px;
     }
 
     /* Hero Mobile */
@@ -698,7 +688,7 @@ footer {
 
     /* Contact Cards Mobile */
     .contact-methods {
-        padding: 2rem 0;
+        padding: 3rem 0;
     }
 
     .contact-methods h2 {
@@ -805,4 +795,100 @@ footer {
 
     .form-group input,
     .form-group select,
+    .form-group textarea {
+        padding: 0.75rem;
+    }
+
+    .submit-btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
+    }
     
+    .mobile-nav a {
+        font-size: 1.4rem;
+    }
+    
+    .contact-btn-mobile {
+        padding: 10px 25px;
+        font-size: 1.4rem;
+    }
+}
+
+/* Estilos para notificaciones de error */
+.error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+    border-color: #dc3545;
+}
+
+/* Loading state */
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Animaciones y transiciones mejoradas */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-card,
+.info-card,
+.contact-form,
+.map-container {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Estados de focus mejorados para accesibilidad */
+nav a:focus,
+.contact-card:focus,
+.submit-btn:focus,
+.header-social a:focus,
+.social-links a:focus,
+.mobile-nav a:focus,
+.mobile-social a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Estilos para el body cuando el menú está activo */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* Animación de slide para notificaciones */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
