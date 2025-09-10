@@ -65,28 +65,20 @@ nav a:hover { color: var(--primary-color); }
 
 /* ============ MOBILE MENU FIX ============ */
 @media (max-width: 767px) {
-    /* Corrección del header en móvil */
     #header { 
         padding: 15px 0; 
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
     }
     
-    /* Asegurar que el contenedor del header mantenga el layout correcto */
     #header .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        position: relative;
     }
     
-    /* El logo debe estar siempre visible y por encima del menú desplegable */
     .logo { 
         display: block;
         position: relative;
-        z-index: 1100;
+        z-index: 1001; /* Mayor que el z-index del nav-content */
     }
     
     .logo img { 
@@ -94,14 +86,12 @@ nav a:hover { color: var(--primary-color); }
         display: block;
     }
     
-    /* El botón de menú también debe estar siempre visible */
     .menu-toggle { 
         display: block;
         position: relative;
-        z-index: 1100;
+        z-index: 1001; /* Mayor que el z-index del nav-content */
     }
     
-    /* Menú desplegable ajustado */
     .nav-content {
         position: fixed;
         top: 0;
@@ -110,39 +100,88 @@ nav a:hover { color: var(--primary-color); }
         height: 100vh;
         background: var(--white);
         flex-direction: column;
-        justify-content: flex-start; /* Alineamos desde arriba */
+        justify-content: center;
         align-items: center;
-        padding-top: 100px; /* Espacio para el logo y menú */
-        padding-bottom: 30px;
+        padding: 50px 20px 30px 20px;
         transition: all 0.3s ease;
-        z-index: 1050;
-        overflow-y: auto;
+        z-index: 1000;
     }
     
     .nav-content.active { left: 0; }
-    
-    /* Ajustamos los enlaces de navegación */
-    nav ul { 
-        flex-direction: column; 
-        align-items: center; 
-        gap: 25px; 
-        margin-top: 20px; /* Espacio adicional desde la parte superior */
-    }
-    
+    nav ul { flex-direction: column; align-items: center; gap: 25px; }
     nav a { font-size: 1.5rem; }
     .contact-btn { padding: 15px 30px !important; font-size: 1.3rem !important; }
-    
-    /* Movemos los iconos sociales más arriba */
-    .header-social { 
-        margin-top: 30px; 
-        gap: 20px; 
-        order: 3; /* Aseguramos que aparezca después de los enlaces */
-    }
-    
+    .header-social { margin-top: 30px; gap: 20px; }
     .header-social a { font-size: 1.8rem; }
     
-    /* Ajuste del contenido principal para que no quede debajo del header */
-    main { padding-top: 100px !important; }
+    /* Ajuste para posicionar las secciones más arriba y los iconos sociales */
+    main { 
+        padding-top: 100px !important; 
+        display: flex;
+        flex-direction: column;
+    }
+    
+    main .page-title {
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+    
+    /* Estilo especial para la página de proyectos en móvil */
+    .page-title + .projects-grid {
+        order: 3;
+        margin-top: 40px;
+    }
+    
+    /* Estilos para mostrar las secciones principales al estilo del inicio */
+    main .container:first-child:after {
+        content: "";
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Enlaces de navegación móvil que aparecen como la imagen de referencia */
+    .mobile-nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        order: 1;
+        width: 100%;
+        margin: -50px auto 30px;
+    }
+    
+    .mobile-nav-links a {
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        margin: 10px 0;
+        font-weight: 600;
+    }
+    
+    .mobile-nav-links .contact-btn-mobile {
+        border: 2px solid var(--primary-color);
+        padding: 15px 30px;
+        border-radius: 8px;
+        display: inline-block;
+        margin-top: 10px;
+    }
+    
+    /* Iconos sociales en móvil */
+    .mobile-social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        width: 100%;
+        order: 2;
+        margin: 20px 0 40px;
+    }
+    
+    .mobile-social-icons a {
+        font-size: 1.8rem;
+        color: var(--text-color);
+    }
+    
     body.no-scroll { overflow: hidden; }
 }
 
