@@ -297,7 +297,7 @@ footer {
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 0.8fr 1fr 1.2fr 1fr; /* Ajustado para dar más espacio a la columna de contacto */
     gap: 40px;
     margin-bottom: 30px;
 }
@@ -373,6 +373,44 @@ footer {
     transform: translateY(-3px);
 }
 
+/* Estilos específicos para escritorio - Corrige el alineamiento del correo */
+@media (min-width: 769px) {
+    .footer-contact .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 15px;
+        white-space: nowrap; /* Evita que el correo se parta */
+        overflow: visible; /* Permite que el texto se muestre completo */
+    }
+    
+    .footer-contact .contact-item a,
+    .footer-contact .contact-item span {
+        font-size: 1rem;
+        color: var(--text-color);
+        text-decoration: none;
+        display: inline-block;
+    }
+}
+
+/* Mantiene la configuración original para móvil */
+@media (max-width: 768px) {
+    .footer-contact .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 15px;
+        word-break: break-all;
+    }
+
+    .footer-contact .contact-item a,
+    .footer-contact .contact-item span {
+        font-size: 1rem;
+        color: var(--text-color);
+        text-decoration: none;
+    }
+}
+
 /* ==== RESPONSIVE DESIGN ==== */
 @media (max-width: 1199px) and (min-width: 768px) {
     .projects-grid {
@@ -437,8 +475,5 @@ footer {
 @media (min-width: 1200px) {
     .projects-grid {
         grid-template-columns: repeat(3, 1fr);
-    }
-    .footer-content {
-        grid-template-columns: repeat(4, 1fr);
     }
 }

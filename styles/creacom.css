@@ -279,7 +279,7 @@ footer {
 
 .footer-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1.4fr 1fr; /* Ajuste del ancho de las columnas */
     gap: 40px;
     margin-bottom: 30px;
 }
@@ -313,10 +313,15 @@ footer {
 }
 
 .contact-item {
+    display: flex;
+    align-items: center; /* Alineación vertical del icono y texto */
+    gap: 8px; /* Espacio entre el icono y el texto */
     margin-bottom: 15px;
+    word-break: normal; /* Evitar división incorrecta del texto */
 }
 
 .contact-item a {
+    white-space: nowrap; /* Evitar división en múltiples líneas */
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s ease;
@@ -327,6 +332,7 @@ footer {
     color: var(--primary-color);
 }
 
+/* Redes Sociales */
 .social-links {
     display: flex;
     gap: 15px;
@@ -496,31 +502,9 @@ footer {
     }
 }
 
-/* ...tu CSS original arriba... */
-
 /* Footer NAV & CONTACT Hover efecto rojo */
 .footer-nav a:hover,
-.contact-item a:hover,
-.footer-contact .ubicacion:hover,
-.footer-contact .ubicacion:hover i {
+.contact-item a:hover {
     color: var(--primary-color) !important;
-    transition: color 0.3s;
-}
-.footer-contact .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Espacio entre icono y texto */
-    margin-bottom: 15px;
-    word-break: break-all; /* Para que el mail se parta bonito si es necesario */
-}
-
-.footer-contact .contact-item a,
-.footer-contact .contact-item span {
-    font-size: 1rem;
-    color: var(--text-color);
-    text-decoration: none;
-    /* Puedes agregar más estilos si quieres */
-}
-.footer-contact .contact-item {
-    align-items: flex-start;
+    transition: color 0.3s ease;
 }
