@@ -657,7 +657,10 @@ footer {
     color: var(--primary-color);
 }
 
+/* Estilos actualizados para los elementos de contacto en el footer */
 .contact-item {
+    display: flex;
+    align-items: center;
     margin-bottom: 15px;
 }
 
@@ -665,6 +668,8 @@ footer {
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
 }
 
 .contact-item a:hover {
@@ -673,8 +678,11 @@ footer {
 
 .contact-item i {
     margin-right: 8px;
-    width: 16px;
+    min-width: 16px;
     color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .social-links {
@@ -834,6 +842,11 @@ footer {
     }
     
     .social-links {
+        justify-content: center;
+    }
+
+    /* Ajuste para contactos en móvil */
+    .contact-item {
         justify-content: center;
     }
 }
