@@ -477,3 +477,9 @@ footer {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+/* Footer NAV & CONTACT Hover efecto rojo */
+.footer-nav a:hover,
+.contact-item a:hover {
+    color: var(--primary-color) !important;
+    transition: color 0.3s ease;
+}
