@@ -387,7 +387,7 @@ footer {
     justify-content: center;
     width: 40px;
     height: 40px;
-    text-decoration: none; /* ESTA ES LA SOLUCIÓN - elimina subrayado */
+    text-decoration: none; /* SOLUCIÓN: elimina el subrayado de los iconos */
 }
 
 .social-links a:hover {
@@ -403,7 +403,16 @@ footer {
     }
 }
 
+/* SOLUCIÓN PARA LA VISTA MOBILE */
 @media (max-width: 767px) {
+    /* Corregido para asegurar que proyectos aparezcan en columna en mobile */
+    .projects-grid {
+        grid-template-columns: 1fr !important; /* !important para asegurar que siempre se aplique */
+        gap: 25px;
+        padding: 0 15px;
+    }
+    
+    /* Ajustes del footer para mobile */
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
