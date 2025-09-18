@@ -530,7 +530,7 @@ footer {
         margin-bottom: 20px;
     }
     
-    /* Estilo para los iconos sociales */
+    /* Estilo para los iconos sociales - Eliminando líneas y bordes inferiores */
     .social-links {
         display: flex;
         justify-content: center;
@@ -546,6 +546,18 @@ footer {
         background-color: rgba(255, 0, 0, 0.1);
         border-radius: 50%;
         font-size: 1.5rem;
+        text-decoration: none !important;
+        border-bottom: none !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+    
+    /* Eliminar cualquier decoración de texto o líneas para todos los iconos sociales */
+    .footer-social a, 
+    .social-links a i {
+        text-decoration: none !important;
+        border-bottom: none !important;
+        box-shadow: none !important;
     }
     
     /* Reducir el tamaño de los títulos de sección */
@@ -558,5 +570,12 @@ footer {
     /* Añadir algo de espacio entre las secciones */
     #contacto .container {
         padding-bottom: 20px;
+    }
+    
+    /* Ajuste para la dirección que parece estar creando un espacio grande */
+    .contact-item i.fas.fa-map-marker-alt + span {
+        display: inline-block;
+        text-align: center;
+        margin-top: 5px;
     }
 }
