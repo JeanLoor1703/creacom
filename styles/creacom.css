@@ -509,3 +509,54 @@ footer {
     color: var(--primary-color) !important;
     transition: color 0.3s ease;
 }
+
+/* Ajustes específicos para el footer en móviles */
+@media (max-width: 480px) {
+    /* Ocultar el logo en el footer para móviles */
+    .footer-logo {
+        display: none;
+    }
+    
+    /* Organizar mejor el espaciado y centrado */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        text-align: center;
+    }
+    
+    /* Mejorar el aspecto de los elementos de contacto */
+    .contact-item {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    /* Estilo para los iconos sociales */
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 0, 0, 0.1);
+        border-radius: 50%;
+        font-size: 1.5rem;
+    }
+    
+    /* Reducir el tamaño de los títulos de sección */
+    .footer-nav h4,
+    .footer-contact h4,
+    .footer-social h4 {
+        margin-bottom: 15px;
+    }
+    
+    /* Añadir algo de espacio entre las secciones */
+    #contacto .container {
+        padding-bottom: 20px;
+    }
+}
