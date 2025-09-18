@@ -345,6 +345,8 @@ footer {
     padding: 8px;
     border-radius: 50%;
     background: rgba(255, 0, 0, 0.1);
+    text-decoration: none;
+    border-bottom: none;
 }
 
 .social-links a:hover {
@@ -457,8 +459,15 @@ footer {
         text-align: center;
     }
 
+    /* CORREGIDO: Ya no ocultamos el logo en móvil */
     .footer-logo {
         text-align: center;
+        margin-bottom: 15px; /* Espacio debajo del logo */
+    }
+
+    .footer-logo img {
+        height: 50px; /* Logo un poco más pequeño para móvil */
+        margin: 0 auto 10px; /* Centrar el logo */
     }
 
     .social-links {
@@ -512,11 +521,6 @@ footer {
 
 /* Ajustes específicos para el footer en móviles */
 @media (max-width: 480px) {
-    /* Ocultar el logo en el footer para móviles */
-    .footer-logo {
-        display: none;
-    }
-    
     /* Organizar mejor el espaciado y centrado */
     .footer-content {
         grid-template-columns: 1fr;
@@ -546,10 +550,10 @@ footer {
         background-color: rgba(255, 0, 0, 0.1);
         border-radius: 50%;
         font-size: 1.5rem;
-        text-decoration: none !important;
-        border-bottom: none !important;
-        box-shadow: none !important;
-        border: none !important;
+        text-decoration: none;
+        border-bottom: none;
+        box-shadow: none;
+        border: none;
     }
     
     /* Eliminar cualquier decoración de texto o líneas para todos los iconos sociales */
