@@ -566,42 +566,62 @@ nav a:hover {
     font-size: 0.95rem;
 }
 
-/* Notification Styles */
+/* --- Estilos para las Notificaciones (Versión Mejorada) --- */
 .notification {
     position: fixed;
     top: 20px;
     right: 20px;
-    max-width: 400px;
+    padding: 1rem 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     z-index: 10000;
-}
-
-.notification-content {
     display: flex;
     align-items: center;
-    padding: 15px 20px;
+    gap: 10px;
+    max-width: 400px;
+    transform: translateX(120%);
+    transition: transform 0.4s ease;
+    font-family: 'Montserrat', sans-serif;
+    border-left: 5px solid #666; 
+    background: #fff;
+    color: #333;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+/* ESTA ES LA PARTE IMPORTANTE PARA EL COLOR VERDE */
+.notification-success {
+    background-color: #d4edda; /* Fondo verde claro */
+    border-color: #28a745;      /* Borde verde oscuro */
+    color: #155724;             /* Texto verde oscuro */
+}
+
+.notification-error {
+    background-color: #f8d7da; /* Fondo rojo claro */
+    border-color: #dc3545;      /* Borde rojo oscuro */
+    color: #721c24;             /* Texto rojo oscuro */
 }
 
 .notification i {
-    margin-right: 12px;
     font-size: 1.2rem;
 }
 
 .notification-close {
-    margin-left: auto;
     background: none;
     border: none;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
+    line-height: 1;
     cursor: pointer;
+    color: inherit;
     opacity: 0.7;
-    transition: opacity 0.2s;
+    margin-left: auto;
+    padding: 0 5px;
 }
-
 .notification-close:hover {
     opacity: 1;
 }
-
 /* Footer - Igual que inicio y proyectos */
 footer {
     background: #f0f0f0;
