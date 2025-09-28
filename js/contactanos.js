@@ -172,3 +172,127 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+document.addEventListener('DOMContentLoaded', function() {
+    // Elementos del chatbot
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    const userInput = document.getElementById('userInput');
+    const sendButton = document.getElementById('sendMessage');
+    const suggestionButtons = document.querySelectorAll('.suggestion-btn');
+    
+    // Base de conocimiento (preguntas y respuestas)
+    const knowledgeBase = {
+        "¿qué es creacom?": "CreaCom es una constructora líder en Guayas, Ecuador, especializada en obras civiles, carreteras, remodelaciones y diversos proyectos de construcción. Nos caracterizamos por ofrecer servicios de alta calidad y confianza.",
+        "que es creacom": "CreaCom es una constructora líder en Guayas, Ecuador, especializada en obras civiles, carreteras, remodelaciones y diversos proyectos de construcción. Nos caracterizamos por ofrecer servicios de alta calidad y confianza.",
+        "¿qué servicios ofrecen?": "Ofrecemos una amplia gama de servicios que incluyen: construcción de obras civiles, desarrollo de carreteras, remodelaciones, construcción de aceras y bordillos, y otros proyectos personalizados según las necesidades de nuestros clientes.",
+        "que servicios ofrecen": "Ofrecemos una amplia gama de servicios que incluyen: construcción de obras civiles, desarrollo de carreteras, remodelaciones, construcción de aceras y bordillos, y otros proyectos personalizados según las necesidades de nuestros clientes.",
+        "¿dónde están ubicados?": "Estamos ubicados en Av. Guayaquil y Calle Quito, Edificio Marcimex, 3er piso, en El Empalme, Guayas, Ecuador. Puede visitarnos de lunes a viernes de 8:00 AM a 6:00 PM y sábados de 8:00 AM a 12:00 PM.",
+        "donde estan ubicados": "Estamos ubicados en Av. Guayaquil y Calle Quito, Edificio Marcimex, 3er piso, en El Empalme, Guayas, Ecuador. Puede visitarnos de lunes a viernes de 8:00 AM a 6:00 PM y sábados de 8:00 AM a 12:00 PM."
+    };
+    
+    // Función para mostrar/ocultar el chatbot
+    chatbotToggle.addEventListener('click', function() {
+        if (chatbotWindow.style.display === 'flex') {
+            chatbotWindow.style.display = 'none';
+        } else {
+            chatbotWindow.style.display = 'flex';
+        }
+    });
+    
+    // Cerrar el chatbot
+    chatbotClose.addEventListener('click', function() {
+        chatbotWindow.style.display = 'none';
+    });
+    
+    // Función para añadir un mensaje al chat
+    function addMessage(message, isUser = false) {
+        const messageContainer = document.createElement('div');
+        messageContainer.className = `message-container ${isUser ? 'user-message' : 'bot-message'}`;
+        
+        const messageBubble = document.createElement('div');
+        messageBubble.className = 'message-bubble';
+        
+        const messageText = document.createElement('p');
+        messageText.textContent = message;
+        
+        messageBubble.appendChild(messageText);
+        messageContainer.appendChild(messageBubble);
+        chatbotMessages.appendChild(messageContainer);
+        
+        // Scroll al último mensaje
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+    
+    // Función para procesar la pregunta del usuario
+    function processQuestion(question) {
+        question = question.toLowerCase().trim();
+        
+        // Buscar la respuesta en la base de conocimiento
+        let answer = knowledgeBase[question];
+        
+        // Si no hay una respuesta exacta, tratamos de encontrar una respuesta parcial
+        if (!answer) {
+            for (let key in knowledgeBase) {
+                if (question.includes(key) || key.includes(question)) {
+                    answer = knowledgeBase[key];
+                    break;
+                }
+            }
+        }
+        
+        // Si aún no hay respuesta, usar respuesta por defecto
+        if (!answer) {
+            answer = "Lo siento, no entendí tu pregunta. ¿Puedes reformularla? También puedes hacer clic en una de las sugerencias debajo.";
+        }
+        
+        return answer;
+    }
+    
+    // Enviar mensaje al hacer clic en el botón
+    sendButton.addEventListener('click', function() {
+        sendMessage();
+    });
+    
+    // Enviar mensaje al presionar Enter
+    userInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+    
+    // Función para enviar mensaje
+    function sendMessage() {
+        const message = userInput.value.trim();
+        if (message) {
+            // Añadir mensaje del usuario
+            addMessage(message, true);
+            
+            // Limpiar input
+            userInput.value = '';
+            
+            // Simular tiempo de respuesta
+            setTimeout(function() {
+                const answer = processQuestion(message);
+                addMessage(answer);
+            }, 500);
+        }
+    }
+    
+    // Manejar clics en botones de sugerencias
+    suggestionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const question = this.dataset.question;
+            
+            // Añadir la pregunta como mensaje del usuario
+            addMessage(question, true);
+            
+            // Simular tiempo de respuesta
+            setTimeout(function() {
+                const answer = processQuestion(question);
+                addMessage(answer);
+            }, 500);
+        });
+    });
+});
