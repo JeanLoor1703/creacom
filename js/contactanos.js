@@ -184,12 +184,29 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Base de conocimiento (preguntas y respuestas)
     const knowledgeBase = {
+        // Respuestas existentes
         "¿qué es creacom?": "CreaCom es una constructora líder en Guayas, Ecuador, especializada en obras civiles, carreteras, remodelaciones y diversos proyectos de construcción. Nos caracterizamos por ofrecer servicios de alta calidad y confianza.",
         "que es creacom": "CreaCom es una constructora líder en Guayas, Ecuador, especializada en obras civiles, carreteras, remodelaciones y diversos proyectos de construcción. Nos caracterizamos por ofrecer servicios de alta calidad y confianza.",
         "¿qué servicios ofrecen?": "Ofrecemos una amplia gama de servicios que incluyen: construcción de obras civiles, desarrollo de carreteras, remodelaciones, construcción de aceras y bordillos, y otros proyectos personalizados según las necesidades de nuestros clientes.",
         "que servicios ofrecen": "Ofrecemos una amplia gama de servicios que incluyen: construcción de obras civiles, desarrollo de carreteras, remodelaciones, construcción de aceras y bordillos, y otros proyectos personalizados según las necesidades de nuestros clientes.",
         "¿dónde están ubicados?": "Estamos ubicados en Av. Guayaquil y Calle Quito, Edificio Marcimex, 3er piso, en El Empalme, Guayas, Ecuador. Puede visitarnos de lunes a viernes de 8:00 AM a 5:00PM .",
-        "donde estan ubicados": "Estamos ubicados en Av. Guayaquil y Calle Quito, Edificio Marcimex, 3er piso, en El Empalme, Guayas, Ecuador. Puede visitarnos de lunes a viernes de 8:00 AM a 5:00PM y sábados de 8:00 AM a 12:00 PM."
+        "donde estan ubicados": "Estamos ubicados en Av. Guayaquil y Calle Quito, Edificio Marcimex, 3er piso, en El Empalme, Guayas, Ecuador. Puede visitarnos de lunes a viernes de 8:00 AM a 5:00PM y sábados de 8:00 AM a 12:00 PM.",
+        
+        // Corrigiendo la respuesta para contacto con gerente
+        "¿deseas comunicarte con la gerente?": "Muy bien, este es el número de la Gerente si deseas contactar rápido: +593 98 765 4321. También puedes usar el botón de WhatsApp en nuestra página.",
+        "deseas comunicarte con la gerente": "Muy bien, este es el número de la Gerente si deseas contactar rápido: +593 98 765 4321. También puedes usar el botón de WhatsApp en nuestra página.",
+        "comunicarme con la gerente": "Muy bien, este es el número de la Gerente si deseas contactar rápido: +593 98 765 4321. También puedes usar el botón de WhatsApp en nuestra página.",
+        
+        // Añadiendo respuestas para saludos
+        "hola": "¡Hola! ¿En qué puedo ayudarte hoy?",
+        "buenos días": "¡Buenos días! ¿En qué puedo asistirte hoy?",
+        "buenas tardes": "¡Buenas tardes! ¿Cómo puedo ayudarte?",
+        "buenas noches": "¡Buenas noches! Estoy aquí para resolver tus dudas.",
+        
+        // Añadiendo respuestas para palabras clave
+        "ayuda": "Estoy aquí para ayudarte. Puedes preguntarme sobre nuestros servicios, ubicación o contactar con la gerente.",
+        "más información": "Puedo proporcionarte más información sobre CreaCom. ¿Qué te gustaría saber específicamente? Tenemos información sobre nuestros servicios, ubicación y formas de contacto.",
+        "contacto": "Puedes contactarnos por teléfono al +593 98 765 4321, visitarnos en nuestra oficina en Av. Guayaquil y Calle Quito, o usar el botón de WhatsApp en nuestra página."
     };
     
     // Función para mostrar/ocultar el chatbot
@@ -225,29 +242,48 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
     }
     
-    // Función para procesar la pregunta del usuario
+    // Función mejorada para procesar la pregunta del usuario
     function processQuestion(question) {
-        question = question.toLowerCase().trim();
+        // Convertir a minúsculas y eliminar espacios extras
+        const cleanedQuestion = question.toLowerCase().trim();
         
-        // Buscar la respuesta en la base de conocimiento
-        let answer = knowledgeBase[question];
+        // Buscar respuesta exacta
+        if (knowledgeBase[cleanedQuestion]) {
+            return knowledgeBase[cleanedQuestion];
+        }
         
-        // Si no hay una respuesta exacta, tratamos de encontrar una respuesta parcial
-        if (!answer) {
-            for (let key in knowledgeBase) {
-                if (question.includes(key) || key.includes(question)) {
-                    answer = knowledgeBase[key];
-                    break;
+        // Verificar palabras clave en la pregunta
+        for (let key in knowledgeBase) {
+            // Si la pregunta contiene la palabra clave completa
+            if (cleanedQuestion.includes(key)) {
+                return knowledgeBase[key];
+            }
+        }
+        
+        // Verificar saludos comunes
+        const greetings = ["hola", "buenos días", "buenas tardes", "buenas noches", "saludos"];
+        for (let greeting of greetings) {
+            if (cleanedQuestion.includes(greeting)) {
+                return knowledgeBase[greeting] || "¡Hola! ¿Cómo puedo ayudarte hoy?";
+            }
+        }
+        
+        // Verificar palabras clave de ayuda
+        const helpWords = ["ayuda", "información", "contacto", "comunicar", "gerente"];
+        for (let word of helpWords) {
+            if (cleanedQuestion.includes(word)) {
+                if (word === "gerente" || word === "comunicar") {
+                    return knowledgeBase["¿deseas comunicarte con la gerente?"];
+                } else if (word === "información") {
+                    return knowledgeBase["más información"];
+                } else {
+                    return knowledgeBase[word] || "Estoy aquí para ayudarte. ¿Qué necesitas saber sobre CreaCom?";
                 }
             }
         }
         
-        // Si aún no hay respuesta, usar respuesta por defecto
-        if (!answer) {
-            answer = "Lo siento, no entendí tu pregunta. ¿Puedes reformularla? También puedes hacer clic en una de las sugerencias debajo.";
-        }
-        
-        return answer;
+        // Respuesta por defecto más amigable
+        return "¡Hola! 😄 Puedo ayudarte con información sobre CreaCom, nuestros servicios o contacto. Haz clic en las preguntas abajo y encontrarás las respuestas. ¡Gracias!";
     }
     
     // Enviar mensaje al hacer clic en el botón
