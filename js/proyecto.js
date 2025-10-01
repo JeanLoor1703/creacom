@@ -91,4 +91,41 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
         observer.observe(card);
     });
+    
+    // Toggle para "Más Proyectos"
+    const moreProjectsToggle = document.getElementById('moreProjectsToggle');
+    const moreProjectsGrid = document.getElementById('moreProjectsGrid');
+    
+    if (moreProjectsToggle && moreProjectsGrid) {
+        moreProjectsToggle.addEventListener('click', () => {
+            moreProjectsToggle.classList.toggle('active');
+            moreProjectsGrid.classList.toggle('active');
+        });
+    }
+    
+    // Slider de imágenes para "Más Proyectos"
+    const sliders = document.querySelectorAll('.slider');
+    
+    // Función para cambiar slides
+    function changeSlide(slider) {
+        const slides = slider.querySelectorAll('.slide');
+        let activeSlide = slider.querySelector('.slide.active');
+        let nextSlide;
+        
+        // Encuentra el siguiente slide
+        if (activeSlide.nextElementSibling && activeSlide.nextElementSibling.classList.contains('slide')) {
+            nextSlide = activeSlide.nextElementSibling;
+        } else {
+            nextSlide = slides[0]; // Vuelve al primer slide
+        }
+        
+        // Desactiva el slide actual y activa el siguiente
+        activeSlide.classList.remove('active');
+        nextSlide.classList.add('active');
+    }
+    
+    // Configura los sliders para que cambien automáticamente cada 10 segundos
+    sliders.forEach(slider => {
+        setInterval(() => changeSlide(slider), 10000);
+    });
 });

@@ -188,8 +188,8 @@ document.addEventListener('DOMContentLoaded', function() {
         "que es creacom": "CreaCom es una constructora líder en Guayas, Ecuador, especializada en obras civiles, carreteras, remodelaciones y diversos proyectos de construcción. Nos caracterizamos por ofrecer servicios de alta calidad y confianza.",
         "¿qué servicios ofrecen?": "Ofrecemos una amplia gama de servicios que incluyen: construcción de obras civiles, desarrollo de carreteras, remodelaciones, construcción de aceras y bordillos, y otros proyectos personalizados según las necesidades de nuestros clientes.",
         "que servicios ofrecen": "Ofrecemos una amplia gama de servicios que incluyen: construcción de obras civiles, desarrollo de carreteras, remodelaciones, construcción de aceras y bordillos, y otros proyectos personalizados según las necesidades de nuestros clientes.",
-        "¿dónde están ubicados?": "Estamos ubicados en Av. Guayaquil y Calle Quito, Edificio Marcimex, 3er piso, en El Empalme, Guayas, Ecuador. Puede visitarnos de lunes a viernes de 8:00 AM a 6:00 PM y sábados de 8:00 AM a 12:00 PM.",
-        "donde estan ubicados": "Estamos ubicados en Av. Guayaquil y Calle Quito, Edificio Marcimex, 3er piso, en El Empalme, Guayas, Ecuador. Puede visitarnos de lunes a viernes de 8:00 AM a 6:00 PM y sábados de 8:00 AM a 12:00 PM."
+        "¿dónde están ubicados?": "Estamos ubicados en Av. Guayaquil y Calle Quito, Edificio Marcimex, 3er piso, en El Empalme, Guayas, Ecuador. Puede visitarnos de lunes a viernes de 8:00 AM a 5:00PM .",
+        "donde estan ubicados": "Estamos ubicados en Av. Guayaquil y Calle Quito, Edificio Marcimex, 3er piso, en El Empalme, Guayas, Ecuador. Puede visitarnos de lunes a viernes de 8:00 AM a 5:00PM y sábados de 8:00 AM a 12:00 PM."
     };
     
     // Función para mostrar/ocultar el chatbot
