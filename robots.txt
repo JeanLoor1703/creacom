@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.creacomsa.com/sitemap.xml
+Sitemap: https://creacomsa.com/sitemap.xml
