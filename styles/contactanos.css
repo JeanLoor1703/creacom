@@ -1251,6 +1251,80 @@ footer {
     line-height: 1.4;
 }
 
+/* Estilos para los botones de servicios */
+.services-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+    padding-left: 0;
+    width: 100%;
+}
+
+.service-option-btn {
+    background-color: #1a365d;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(26, 54, 93, 0.2);
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    max-width: 250px;
+}
+
+.service-option-btn:hover {
+    background-color: #2c4a7c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(26, 54, 93, 0.3);
+}
+
+.service-option-btn:active {
+    transform: translateY(0);
+}
+
+/* Estilos para el botón de WhatsApp dentro del chat */
+.whatsapp-button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    padding-left: 0;
+}
+
+.whatsapp-chat-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25D366;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.whatsapp-chat-btn:hover {
+    background-color: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-chat-btn i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
 .chatbot-suggestions {
     padding: 10px 15px;
     display: flex;
@@ -1338,5 +1412,15 @@ footer {
     
     .chatbot-status {
         font-size: 11px;
+    }
+    
+    .whatsapp-chat-btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+    
+    .service-option-btn {
+        font-size: 12px;
+        padding: 9px 14px;
     }
 }
