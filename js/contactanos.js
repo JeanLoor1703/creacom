@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Simular tiempo de respuesta
         setTimeout(function() {
-            addMessage("Podemos hacer este proyecto realidad, no perdamos tiempo, pongámonos en contacto.");
+            addMessage("Gracias por tu interés en nuestros servicios. Estamos listos para hacer realidad tu proyecto. Para no perder tiempo, te invitamos a ponerte en contacto con nuestra gerente y hablar sobre los detalles. ¡Estamos a tu disposición!.");
             
             // Mostrar el botón de WhatsApp después de un breve delay
             setTimeout(function() {
@@ -444,7 +444,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 // Verificar si la respuesta es sobre cotización
                 else if (answer === "COTIZACION") {
-                    addMessage("Gracias por tu interés en nuestros servicios. Estamos listos para hacer realidad tu proyecto. Para no perder tiempo, te invitamos a ponerte en contacto con nuestra gerente y discutir los detalles. ¡Estamos a tu disposición!");
+                    addMessage("Perfecto. Estamos encantados de iniciar tu proyecto. Para esto, puedes ponerte en contacto con la gerente");
                     setTimeout(function() {
                         showWhatsAppButton();
                     }, 300);
