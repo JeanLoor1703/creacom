@@ -583,3 +583,407 @@ footer {
         margin-top: 5px;
     }
 }
+/* Estilos para el botón flotante de WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    background-color: #25d366;
+    color: white;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    text-decoration: none;
+    padding: 15px 25px 10px 20px;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-float-icon {
+    font-size: 32px; /* Tamaño más grande del ícono */
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp-float-text {
+    font-size: 16px; /* Texto más grande */
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Estilos responsivos para móviles */
+@media (max-width: 767px) {
+    .whatsapp-float {
+        padding: 12px 20px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .whatsapp-float-icon {
+        font-size: 28px; /* Aún grande pero adaptado a móvil */
+    }
+    
+    .whatsapp-float-text {
+        font-size: 14px;
+    }
+}
+
+/* Para pantallas muy pequeñas, solo mostrar el ícono */
+@media (max-width: 480px) {
+    .whatsapp-float {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        padding: 0;
+        justify-content: center;
+    }
+    
+    .whatsapp-float-icon {
+        margin-right: 0;
+        font-size: 32px;
+    }
+    
+    .whatsapp-float-text {
+        display: none;
+    }
+}
+/* Estilos para el chatbot */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.chatbot-toggle {
+    display: flex;
+    align-items: center;
+    background-color: #1a365d;
+    color: #ffffff;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.chatbot-toggle:hover {
+    transform: scale(1.05);
+    background-color: #2c4a7c;
+}
+
+.chatbot-avatar {
+    background-color: #ffffff;
+    color: #1a365d;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.chatbot-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.chatbot-name {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.chatbot-status {
+    font-size: 12px;
+    color: #8cff7a;
+}
+
+.chatbot-window {
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    width: 320px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    max-height: 500px;
+}
+
+.chatbot-header {
+    background-color: #1a365d;
+    color: #ffffff;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chatbot-header-info {
+    display: flex;
+    align-items: center;
+}
+
+.chatbot-header-avatar {
+    background-color: #ffffff;
+    color: #1a365d;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.chatbot-header h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.chatbot-close {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.chatbot-messages {
+    padding: 15px;
+    overflow-y: auto;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-container {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.bot-message {
+    align-items: flex-start;
+}
+
+.user-message {
+    align-items: flex-end;
+}
+
+.message-bubble {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.bot-message .message-bubble {
+    background-color: #f0f2f5;
+    color: #333;
+    border-bottom-left-radius: 5px;
+}
+
+.user-message .message-bubble {
+    background-color: #1a365d;
+    color: #ffffff;
+    border-bottom-right-radius: 5px;
+}
+
+.message-bubble p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Estilos para los botones de servicios */
+.services-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+    padding-left: 0;
+    width: 100%;
+}
+
+.service-option-btn {
+    background-color: #1a365d;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(26, 54, 93, 0.2);
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    max-width: 250px;
+}
+
+.service-option-btn:hover {
+    background-color: #2c4a7c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(26, 54, 93, 0.3);
+}
+
+.service-option-btn:active {
+    transform: translateY(0);
+}
+
+/* Estilos para el botón de WhatsApp dentro del chat */
+.whatsapp-button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    padding-left: 0;
+}
+
+.whatsapp-chat-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25D366;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.whatsapp-chat-btn:hover {
+    background-color: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-chat-btn i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.chatbot-suggestions {
+    padding: 10px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    border-top: 1px solid #e9e9e9;
+}
+
+.suggestion-btn {
+    background-color: #f0f2f5;
+    border: none;
+    border-radius: 15px;
+    padding: 8px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #333;
+}
+
+.suggestion-btn:hover {
+    background-color: #e0e2e5;
+}
+
+.chatbot-input {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-top: 1px solid #e9e9e9;
+}
+
+.chatbot-input input {
+    flex: 1;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 14px;
+    outline: none;
+}
+
+.chatbot-input button {
+    background-color: #1a365d;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.chatbot-input button:hover {
+    background-color: #2c4a7c;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 767px) {
+    .chatbot-window {
+        width: 280px;
+        left: 0;
+        bottom: 70px;
+        max-height: 400px;
+    }
+    
+    .chatbot-messages {
+        height: 250px;
+    }
+    
+    .chatbot-toggle {
+        padding: 8px 15px;
+    }
+    
+    .chatbot-avatar {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+    
+    .chatbot-name {
+        font-size: 13px;
+    }
+    
+    .chatbot-status {
+        font-size: 11px;
+    }
+    
+    .whatsapp-chat-btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+    
+    .service-option-btn {
+        font-size: 12px;
+        padding: 9px 14px;
+    }
+}
