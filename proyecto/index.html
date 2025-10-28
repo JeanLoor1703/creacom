@@ -203,6 +203,60 @@
     </div>
     <span class="whatsapp-float-text">¿Tienes preguntas? ¡Escríbenos!</span>
 </a>
+    <!-- Chatbot Kayal -->
+<div class="chatbot-container">
+    <!-- Botón flotante del chatbot -->
+    <div class="chatbot-toggle" id="chatbotToggle">
+        <div class="chatbot-avatar">
+            <i class="fas fa-headset"></i>
+        </div>
+        <div class="chatbot-info">
+            <span class="chatbot-name">Kayal - Asistente</span>
+            <span class="chatbot-status">En línea</span>
+        </div>
+    </div>
+    
+    <!-- Ventana del chatbot -->
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <div class="chatbot-header-avatar">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div>
+                    <h3>Kayal</h3>
+                    <span>Asistente</span>
+                </div>
+            </div>
+            <button class="chatbot-close" id="chatbotClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message-container bot-message">
+                <div class="message-bubble">
+                    <p>¡Hola! Soy Kayal, Asistente de CreaCom. ¿En qué puedo ayudarte hoy?</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chatbot-suggestions">
+            <button class="suggestion-btn" data-question="¿Qué es CreaCom?">¿Qué es CreaCom?</button>
+            <button class="suggestion-btn" data-question="¿Qué servicios ofrecen?">¿Qué servicios ofrecen?</button>
+            <button class="suggestion-btn" data-question="¿Dónde están ubicados?">¿Dónde están ubicados?</button>
+            <button class="suggestion-btn" data-question="¿Deseas una cotización de tu proyecto?">¿Deseas una cotización?</button>
+        </div>
+        
+        <div class="chatbot-input">
+            <input type="text" id="userInput" placeholder="Escribe tu pregunta aquí...">
+            <button id="sendMessage">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+</div>
+    </div>
+    </div>
 
     <footer id="contacto">
     <div class="container">
